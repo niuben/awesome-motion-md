@@ -1,5 +1,9 @@
 # MOTION.md: Game Impact
 
+## Overview
+
+Game Impact defines punchy, reward-heavy motion for playful interfaces, game UI, launch demos, and high-energy promotional pages. Use it when interactions should feel satisfying, reactive, and dramatic. Motion can include anticipation, overshoot, rebound, impact frames, particles, glow, and short shake effects, but must remain accessible and should not be used for serious productivity flows.
+
 ## Motion Philosophy
 
 Motion should feel punchy, energetic, and rewarding. Use anticipation, overshoot, impact frames, particles, shake, and strong feedback. This style is for demos, game UI, launches, and playful experiences.

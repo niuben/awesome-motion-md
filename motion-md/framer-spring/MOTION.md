@@ -1,5 +1,9 @@
 # MOTION.md: Framer Spring
 
+## Overview
+
+Framer Spring defines physical, interruptible, gesture-aware motion for interfaces that benefit from real spring behavior and layout animation. Use it for prototypes, interactive product UI, draggable surfaces, shared element transitions, reorderable lists, and playful but controlled component motion. Prefer real springs and layout transitions over fixed CSS timelines whenever the platform supports them.
+
 ## Motion Philosophy
 
 Motion should feel physical, interruptible, gesture-aware, and layout-native. Prefer spring behavior, shared layout transitions, and direct manipulation.

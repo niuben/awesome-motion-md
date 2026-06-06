@@ -1,5 +1,9 @@
 # MOTION.md: Linear Snappy
 
+## Overview
+
+Linear Snappy defines ultra-fast motion for modern SaaS and keyboard-driven product interfaces. Use it for issue trackers, command palettes, developer tools, collaboration apps, and high-frequency workflows. Motion should feel nearly instant: tiny distances, very short durations, crisp hover states, and responsive transitions that reinforce speed instead of calling attention to themselves.
+
 ## Motion Philosophy
 
 Motion should feel instant, sharp, and keyboard-fast. The interface should respond before the user has time to notice the animation.

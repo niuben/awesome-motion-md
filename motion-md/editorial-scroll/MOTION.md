@@ -1,5 +1,9 @@
 # MOTION.md: Editorial Scroll
 
+## Overview
+
+Editorial Scroll defines narrative motion for articles, reports, launches, explainers, and scrollytelling pages. Use it when motion should guide reading pace and reveal information progressively. The style favors grouped text reveals, subtle image parallax, caption timing, sticky visual moments, and vertical continuity while preserving readability and scroll control.
+
 ## Motion Philosophy
 
 Motion should support narrative pacing. Use scroll-based reveals, image parallax, text sequencing, and section transitions to guide attention like an interactive article or magazine feature.

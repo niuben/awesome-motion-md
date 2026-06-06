@@ -1,5 +1,9 @@
 # MOTION.md: GSAP Cinematic
 
+## Overview
+
+GSAP Cinematic defines timeline-driven, high-impact motion for marketing pages, launches, portfolios, and visual storytelling. Use it when the page needs directed sequences, scroll choreography, masks, staged text reveals, and strong contrast between stillness and motion. This style is intentionally expressive and should be reserved for moments where visual drama supports the content.
+
 ## Motion Philosophy
 
 Motion should feel directed, sequenced, and visually dramatic. Use timelines, layered reveals, masks, scroll choreography, and strong contrast between stillness and movement.

@@ -1,5 +1,9 @@
 # MOTION.md: Stripe Polished
 
+## Overview
+
+Stripe Polished defines refined, commercial motion for high-trust landing pages and product marketing surfaces. Use it when the interface needs to feel premium, technical, layered, and conversion-focused. Motion should combine smooth reveals, subtle depth, gradient movement, staggered content, and refined hover states without becoming playful or chaotic.
+
 ## Motion Philosophy
 
 Motion should feel refined, commercial, layered, and technically polished. Use subtle depth, gradient movement, staggered reveals, and smooth component state changes.

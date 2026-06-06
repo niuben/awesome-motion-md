@@ -1,5 +1,9 @@
 # MOTION.md: Fluent Productive
 
+## Overview
+
+Fluent Productive defines fast, layered, functional motion for productivity software. Use it for dashboards, workspaces, admin tools, command surfaces, menus, panels, and document-style apps. Motion should clarify hierarchy and state while staying out of the user's way: short durations, small distances, stable layouts, and predictable transitions are more important than visual drama.
+
 ## Motion Philosophy
 
 Motion should support productivity: fast, legible, layered, and functional. Use motion to clarify hierarchy and state, not to entertain.

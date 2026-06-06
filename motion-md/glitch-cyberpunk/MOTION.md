@@ -1,5 +1,9 @@
 # MOTION.md: Glitch Cyberpunk
 
+## Overview
+
+Glitch Cyberpunk defines electric, neon, digitally unstable motion for cyberpunk, hacker, music, gaming, and experimental visual interfaces. Use it when the brand can support scanlines, flicker, chromatic offsets, clipped reveals, and brief displacement. Glitches must be short, intentional, and accessibility-safe: never apply rapid flashing or unstable motion to long-form reading content.
+
 ## Motion Philosophy
 
 Motion should feel electric, unstable, neon, and digital. Use quick cuts, scanlines, chromatic offsets, flickers, and abrupt displacement. Keep glitches intentional and brief.

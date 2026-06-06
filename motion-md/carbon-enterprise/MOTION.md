@@ -1,5 +1,9 @@
 # MOTION.md: Carbon Enterprise
 
+## Overview
+
+Carbon Enterprise defines precise, restrained, accessible motion for complex business software. Use it for data-heavy products, tables, dashboards, analytics tools, forms, and operational workflows. Motion should reduce cognitive load, make cause and effect clear, and avoid decorative behavior that slows down expert users or destabilizes dense layouts.
+
 ## Motion Philosophy
 
 Motion should be precise, restrained, accessible, and appropriate for complex enterprise software. It should reduce cognitive load and clarify cause and effect.

@@ -1,5 +1,9 @@
 # MOTION.md: Material Expressive
 
+## Overview
+
+Material Expressive is a physics-inspired motion system for polished product interfaces. Use it when UI should feel alive, fluid, and coherent without becoming chaotic. This style separates spatial motion from visual effects: use spring-like spatial tokens for movement, scale, size, shape, and rotation; use non-overshooting effects tokens for opacity, color, blur, and shadow. It works best for component demos, dashboards, landing pages, and hero interactions that need premium expressiveness with strong accessibility safeguards.
+
 ## Motion Philosophy
 
 Create expressive, physics-inspired UI motion that feels alive, fluid, and predictable.

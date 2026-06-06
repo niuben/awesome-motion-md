@@ -1,5 +1,9 @@
 # MOTION.md: Apple Fluid
 
+## Overview
+
+Apple Fluid defines calm, continuous, spatial motion for interfaces that should feel premium and directly manipulated. Use it for product pages, mobile-inspired UI, media surfaces, and app experiences where transitions need to preserve context. Motion should be soft, natural, and restrained: prefer continuity, depth, shared elements, subtle scale, and gentle deceleration over bounce or spectacle.
+
 ## Motion Philosophy
 
 Motion should feel continuous, spatial, and quietly premium. Favor natural acceleration, soft deceleration, depth, and direct manipulation. Avoid theatrical bounce, jitter, or decorative effects.

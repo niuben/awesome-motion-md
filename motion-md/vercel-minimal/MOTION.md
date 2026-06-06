@@ -1,5 +1,9 @@
 # MOTION.md: Vercel Minimal
 
+## Overview
+
+Vercel Minimal defines crisp, restrained motion for developer tools, documentation, dashboards, and dark-mode-first product surfaces. Use it when the interface should feel fast, quiet, and technically sharp. Motion should be almost invisible until interaction: subtle opacity, tiny transforms, border or glow transitions, and minimal page choreography.
+
 ## Motion Philosophy
 
 Motion should be minimal, crisp, dark-mode friendly, and almost invisible until interacted with. Prioritize clarity, speed, and restraint.
