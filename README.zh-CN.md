@@ -2,6 +2,12 @@
 
 一个 `MOTION.md` 精选集合，用来帮助 AI Agent 生成更有视觉冲击力、不呆板的 UI 动画。
 
+## 演示
+
+![动画风格列表](asset/list.gif)
+
+![动画生成流程](asset/process.gif)
+
 ## 这是什么？
 
 `MOTION.md` 是写给 Cursor、Claude Code、OpenCode 等 AI 编程 Agent 的动画设计规则文档。
@@ -12,6 +18,7 @@
 
 ```txt
 awesome-motion-md/
+├── asset/                # 演示 GIF 与视觉资源
 ├── motion-md/            # 各种动画风格规则
 ├── docs/                 # 使用指南与示例
 ├── README.md             # 英文 README

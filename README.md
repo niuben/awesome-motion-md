@@ -2,6 +2,12 @@
 
 A curated collection of `MOTION.md` files that help AI agents generate stunning, non-boring UI animations.
 
+## Demo
+
+![Motion style list](asset/list.gif)
+
+![Motion generation process](asset/process.gif)
+
 ## What Is This?
 
 `MOTION.md` is a motion design rulebook for AI coding agents like Cursor, Claude Code, and OpenCode.
@@ -12,6 +18,7 @@ Instead of asking an AI to "make it animated" and getting generic fades, you giv
 
 ```txt
 awesome-motion-md/
+├── asset/                # Demo GIFs and visual assets
 ├── motion-md/            # Motion style rulebooks
 ├── docs/                 # Guides and examples
 ├── README.md             # English README
