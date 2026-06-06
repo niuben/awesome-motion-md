@@ -12,7 +12,7 @@
 
 ```txt
 awesome-motion-md/
-├── src/                  # 各种动画风格规则
+├── motion-md/            # 各种动画风格规则
 ├── docs/                 # 使用指南与示例
 ├── README.md             # 英文 README
 └── README.zh-CN.md       # 中文 README
@@ -20,17 +20,22 @@ awesome-motion-md/
 
 ## 动画风格
 
-所有动画风格会放在 `src/` 目录中，每个风格都是一个完整独立的 `MOTION.md` 规则文件。
+所有动画风格会放在 `motion-md/` 目录中，每个风格都是一个完整独立的 `MOTION.md` 规则文件。
 
-示例：
+已有风格：
 
 ```txt
-src/
-├── high-impact/MOTION.md
-├── elegant/MOTION.md
-├── glitch/MOTION.md
-└── fluid/MOTION.md
+motion-md/
+└── material-expressive/MOTION.md
 ```
+
+| 风格 | 描述 |
+| --- | --- |
+| `material-expressive` | 基于 Material Design 表现型弹簧系统的物理感动效风格。 |
+
+## 参考资料
+
+- [`docs/material-motion-reference.md`](docs/material-motion-reference.md)：提炼后的 Material Motion 参考规则，用于构建 `material-expressive` 风格。
 
 ## 目标
 
