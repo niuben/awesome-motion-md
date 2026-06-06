@@ -26,12 +26,34 @@ Available styles:
 
 ```txt
 motion-md/
-└── material-expressive/MOTION.md
+├── material-expressive/MOTION.md
+├── apple-fluid/MOTION.md
+├── fluent-productive/MOTION.md
+├── carbon-enterprise/MOTION.md
+├── linear-snappy/MOTION.md
+├── stripe-polished/MOTION.md
+├── vercel-minimal/MOTION.md
+├── framer-spring/MOTION.md
+├── gsap-cinematic/MOTION.md
+├── game-impact/MOTION.md
+├── glitch-cyberpunk/MOTION.md
+└── editorial-scroll/MOTION.md
 ```
 
 | Style | Description |
 | --- | --- |
 | `material-expressive` | Physics-inspired motion based on Material Design's expressive spring system. |
+| `apple-fluid` | Calm, continuous, premium motion inspired by Apple's spatial and direct-manipulation feel. |
+| `fluent-productive` | Fast, functional, layered motion for productivity interfaces. |
+| `carbon-enterprise` | Precise and accessible motion for complex enterprise products. |
+| `linear-snappy` | Ultra-fast SaaS motion with tiny distances and crisp state changes. |
+| `stripe-polished` | Refined landing-page motion with depth, stagger, and commercial polish. |
+| `vercel-minimal` | Restrained developer-tool motion with subtle dark-mode-friendly effects. |
+| `framer-spring` | Spring-first, gesture-aware, layout-native motion patterns. |
+| `gsap-cinematic` | Timeline-based cinematic motion for high-impact marketing pages. |
+| `game-impact` | Punchy game-like feedback with anticipation, impact, and reward effects. |
+| `glitch-cyberpunk` | Neon, scanline, and glitch motion with accessibility safeguards. |
+| `editorial-scroll` | Narrative scroll motion for articles, launches, and scrollytelling pages. |
 
 ## References
 

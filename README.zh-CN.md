@@ -26,12 +26,34 @@ awesome-motion-md/
 
 ```txt
 motion-md/
-└── material-expressive/MOTION.md
+├── material-expressive/MOTION.md
+├── apple-fluid/MOTION.md
+├── fluent-productive/MOTION.md
+├── carbon-enterprise/MOTION.md
+├── linear-snappy/MOTION.md
+├── stripe-polished/MOTION.md
+├── vercel-minimal/MOTION.md
+├── framer-spring/MOTION.md
+├── gsap-cinematic/MOTION.md
+├── game-impact/MOTION.md
+├── glitch-cyberpunk/MOTION.md
+└── editorial-scroll/MOTION.md
 ```
 
 | 风格 | 描述 |
 | --- | --- |
 | `material-expressive` | 基于 Material Design 表现型弹簧系统的物理感动效风格。 |
+| `apple-fluid` | 安静、连续、有高级感的空间动效，强调自然过渡和直接操控。 |
+| `fluent-productive` | 面向生产力界面的快速、功能型、层级清晰动效。 |
+| `carbon-enterprise` | 适合复杂企业产品的精确、克制、可访问动效。 |
+| `linear-snappy` | 极快响应的 SaaS 动效，小位移、短时长、状态变化清晰。 |
+| `stripe-polished` | 适合商业落地页的精致动效，强调层次、错峰和高级质感。 |
+| `vercel-minimal` | 克制的开发者工具动效，适合暗色界面和细微反馈。 |
+| `framer-spring` | 以弹簧、手势、布局动画和共享元素转场为核心的动效。 |
+| `gsap-cinematic` | 基于时间线和滚动编排的电影感高冲击力动效。 |
+| `game-impact` | 游戏化反馈动效，包含蓄力、冲击、回弹和奖励效果。 |
+| `glitch-cyberpunk` | 霓虹、扫描线、故障风动效，并包含可访问性限制。 |
+| `editorial-scroll` | 适合文章、发布页和叙事页面的滚动叙事动效。 |
 
 ## 参考资料
 
