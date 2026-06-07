@@ -39,6 +39,21 @@ Motion should feel instant, sharp, and keyboard-fast. The interface should respo
 - Modal open: scale `0.98 -> 1`, opacity `0 -> 1`, `180ms`.
 - Modal close: opacity `1 -> 0`, scale `1 -> 0.99`, `120ms`.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover updates tint/border in `120ms`; press scales to `0.985` for `60ms`; loading spinner starts instantly. |
+| Card/Issue | Hover uses border and background tint, optional y `-1px`; selection state changes in `120ms`. |
+| Dialog | Open with opacity, scale `0.98 -> 1`, and y `6px -> 0` over `180ms`; close in `120ms`. |
+| Popover/Menu | Open with opacity and y `6px -> 0` over `120ms`; active item highlight should move or fade in `60ms`. |
+| Command palette | Scale `0.985 -> 1`, opacity `0 -> 1`, `180ms`; results update with instant layout and `60ms` highlight changes. |
+| Tabs | Indicator snaps over `180ms`; content fades over `120ms` without large lateral movement. |
+| Toast | Slide `8px` from bottom or top over `180ms`; exit with opacity over `120ms`. |
+| Form field | Focus ring, validation, and hint text change over `120ms`; keep field dimensions fixed. |
+| List/Reorder | During drag, follow pointer exactly; siblings settle over `180ms`; inserted items stagger `18ms` max `108ms`. |
+| Loading | Use stable skeletons or compact progress bars; shimmer must be subtle and no longer than `1000ms`. |
+
 ## Scroll
 
 - Avoid scroll-triggered decoration in app UI.

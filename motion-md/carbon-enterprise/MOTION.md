@@ -40,6 +40,21 @@ Motion should be precise, restrained, accessible, and appropriate for complex en
 - Prefer direct, orthogonal movement along x or y axes.
 - Dense workflows should prioritize speed over expressiveness.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover/focus changes color and border over `110ms`; press uses immediate tonal change, not bounce. |
+| Tile/Card | Enter with opacity and y `12px -> 0`; hover uses border or background emphasis, with no lift in dense dashboards. |
+| Modal | Enter with opacity `0 -> 1`, y `12px -> 0`, `240ms`; overlay fades over `150ms`; close in `150ms`. |
+| Overflow menu | Open from trigger with opacity and y `4px -> 0`, `110ms` to `150ms`; keep option rows stable. |
+| Side panel | Slide from owning edge over `240ms` to `400ms`; content fades in after the panel begins moving. |
+| Accordion | Animate height or clip over `240ms`; rotate chevron over `150ms`; avoid overshoot. |
+| Tabs | Indicator moves over `150ms` to `240ms`; panel content fades over `150ms`. |
+| Toast/Inline notification | Fade and slide `8px` from anchor over `150ms`; persistent alerts should not pulse. |
+| Form field | Animate validation message opacity and focus border over `110ms`; reserve message space when possible. |
+| Data table | Do not animate rows individually during sort/filter; use skeletons, opacity, or a single group transition. |
+
 ## Accessibility
 
 - Always support reduced motion.

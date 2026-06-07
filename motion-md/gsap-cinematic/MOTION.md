@@ -44,6 +44,21 @@ Motion should feel directed, sequenced, and visually dramatic. Use timelines, la
 - Between sections: one dominant direction only.
 - Scene changes may last `800ms` to `1200ms`.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover may use magnetic pull up to `8px`, mask sweep, or invert flash; press uses a short impact scale `0.94 -> 1`. |
+| Card | Hover combines 3D tilt up to `8deg`, media zoom `1.08`, and overlay reveal; reset smoothly on pointer leave. |
+| Dialog | Enter as a staged beat: overlay fade, container mask reveal, then content y `24px -> 0`; total `500ms` to `800ms`. |
+| Menu | Reveal with clip-path or staggered items, `30ms` to `50ms` between items; keep utility menus simpler. |
+| Carousel/Gallery | Treat each slide as a scene: outgoing layer masks away while incoming image reveals from one direction. |
+| Tabs | Indicator can wipe or stretch between labels; content should change with a single dominant direction. |
+| Toast/Badge | Use impact pop, glow, or short shine sweep for important beats; avoid constant attention loops. |
+| Form field | Focus may animate underline sweep or label reveal over `180ms`; validation should be clear, not theatrical. |
+| Timeline/Stepper | Animate connector lines and steps sequentially to show progression; max stagger `80ms`. |
+| Loading | Use directed loaders: mask sweeps, progress lines, or staged skeleton reveals; avoid fake long waits. |
+
 ## Reduced Motion
 
 - Disable pinned scroll, parallax, cursor-follow, and 3D tilt.

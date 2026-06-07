@@ -45,6 +45,21 @@ Motion should support narrative pacing. Use scroll-based reveals, image parallax
 - Avoid lateral motion unless the story explicitly compares parallel items.
 - Sticky visual panels are allowed for scrollytelling.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover uses underline, color, or gentle y `-1px` over `180ms`; avoid oversized CTA bounce. |
+| Card | Reveal as part of reading flow with opacity and y `24px -> 0`, `500ms`; hover may zoom image to `1.025`. |
+| Dialog | Use calm overlay fade plus y `20px -> 0`, `500ms`; keep reading position recoverable on close. |
+| Popover/Footnote | Fade and rise `8px` from anchor over `180ms`; dismiss without moving surrounding prose. |
+| Image lightbox | Expand from image position when possible; fade caption after `120ms`; disable parallax inside modal. |
+| Tabs/Comparisons | Use vertical fade or restrained lateral slide only when comparing parallel content. |
+| Pull quote | Reveal with opacity and scale `0.96 -> 1`, `700ms`; do not animate every word unless it is a headline moment. |
+| Newsletter/Form | Focus states animate color and underline over `180ms`; success message fades in under `500ms`. |
+| Table/List | Reveal rows in readable groups, not individually; cap stagger at `180ms` total. |
+| Loading | Prefer static placeholders or gentle fade-in; avoid looping motion near body text. |
+
 ## Reduced Motion
 
 - Disable parallax, sticky scrub animation, and smooth scroll.

@@ -44,6 +44,21 @@ Motion should feel refined, commercial, layered, and technically polished. Use s
 - Keep top-level navigation transitions quick and clean.
 - Use skeletons for dashboards and payment UI.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover shifts gradient position, lifts `-2px`, and increases shadow over `180ms`; press scales to `0.97`. |
+| Card | Hover lifts `-8px`, increases border glow, and may zoom media to `1.035` over `420ms`. |
+| Dialog | Enter with opacity `0 -> 1`, scale `0.96 -> 1`, y `24px -> 0`, `420ms`; dim overlay fades over `180ms`. |
+| Popover/Menu | Use polished layered reveal: opacity, y `10px -> 0`, and subtle blur `8px -> 0` over `180ms` to `240ms`. |
+| Pricing/Feature table | Reveal columns with `60ms` stagger; hover highlights cells through background and border, not row movement. |
+| Tabs | Slide underline or pill indicator over `420ms`; content crossfades over `180ms` with a tiny y shift. |
+| Toast/Banner | Slide from top or bottom with opacity over `420ms`; add a restrained shine sweep only for success or upgrade moments. |
+| Form field | Focus animates border glow and label color over `180ms`; validation message fades and moves `6px` over `180ms`. |
+| Carousel/Testimonial | Move as a grouped layer over `420ms`; avoid independent text and image directions. |
+| Loading | Use skeleton shimmer or masked reveal at `1000ms` to `1400ms`; keep shimmer low contrast. |
+
 ## Reduced Motion
 
 - Disable parallax, perspective tilt, animated gradients, and long staggers.

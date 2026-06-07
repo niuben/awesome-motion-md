@@ -40,6 +40,21 @@ Motion should support productivity: fast, legible, layered, and functional. Use 
 - Navigation between work areas should be quick fade or short slide.
 - Dismissals should be faster than entrances.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover changes background, border, or text color over `120ms`; press scales to `0.98` for `80ms` only when it improves feedback. |
+| Card/Tile | Enter with opacity and y `10px -> 0`; hover uses border, tint, or shadow change rather than lift. |
+| Dialog | Enter with opacity `0 -> 1`, scale `0.98 -> 1`, y `8px -> 0`, `200ms`; close with opacity over `120ms`. |
+| Menu/Flyout | Open from trigger origin with opacity, scale `0.98 -> 1`, `120ms`; nested flyouts slide `8px` from the owning edge. |
+| Panel/Drawer | Slide along one axis over `200ms` to `320ms`; keep toolbar and table layout stable. |
+| Tabs/Pivot | Indicator moves over `200ms`; content uses quick fade or y shift under `8px`. |
+| Toast/Message bar | Fade and slide `8px` from its anchor over `200ms`; dismiss faster at `120ms`. |
+| Form field | Animate focus ring, validation icon, and helper text opacity over `120ms`; avoid layout jumps. |
+| List row | Hover uses background tint only; inserted rows fade in as a group, not one-by-one in dense tables. |
+| Loading | Prefer skeleton rows and progress bars; pulse gently around `1200ms` with fixed dimensions. |
+
 ## Loading
 
 - Prefer progress bars, skeleton rows, and stable placeholders.

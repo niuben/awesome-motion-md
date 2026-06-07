@@ -44,6 +44,21 @@ Motion should be minimal, crisp, dark-mode friendly, and almost invisible until 
 - Dialogs/popovers: opacity plus scale `0.98 -> 1`, `180ms`.
 - Tabs: indicator slides `240ms`; content fades `120ms`.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover changes border/background over `120ms`, optional y `-1px`; press scales `0.99` for `80ms`. |
+| Card | Hover increases border brightness and background gradient opacity over `240ms`; avoid visible lift. |
+| Dialog | Enter with opacity, scale `0.98 -> 1`, y `8px -> 0`, `180ms`; overlay fades over `120ms`. |
+| Popover/Menu | Use opacity plus scale `0.98 -> 1` over `120ms`; active item highlight fades in `120ms`. |
+| Command palette | Fade and scale over `180ms`; result highlight moves instantly with a `120ms` background transition. |
+| Tabs | Indicator slides `240ms`; content fades `120ms`; avoid heavy page-level choreography. |
+| Toast | Fade and y `8px -> 0` over `180ms`; exit with opacity over `120ms`. |
+| Form field | Animate focus ring, border glow, and validation text opacity over `120ms`; keep layout fixed. |
+| Code block | Copy button fades in on hover over `120ms`; line highlight uses background transition only. |
+| Loading | Use static skeletons or subtle linear shimmer; disable decorative scans in reduced motion. |
+
 ## Reduced Motion
 
 - Disable decorative beams, grid scans, and spotlight movement.

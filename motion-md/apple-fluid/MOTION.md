@@ -40,6 +40,21 @@ Motion should feel continuous, spatial, and quietly premium. Favor natural accel
 - Top-level unrelated views should fade cleanly, not slide dramatically.
 - Avoid moving many independent elements in different directions.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover lifts `-1px` with soft shadow over `160ms`; press scales to `0.96` and releases with `--motion-ease-fluid`. |
+| Card | Hover lifts `-4px`, scale `1.005`, and deepens shadow over `320ms`; selected cards may expand with shared-element continuity. |
+| Dialog | Enter with opacity `0 -> 1`, scale `0.96 -> 1`, and y `18px -> 0` over `320ms`; close with opacity and slight scale down over `200ms`. |
+| Popover/Menu | Grow from trigger origin with opacity `0 -> 1`, scale `0.98 -> 1`, and y `8px -> 0` over `200ms`. |
+| Sheet/Drawer | Slide from owning edge over `320ms` to `560ms`, keeping inner content slightly delayed by `60ms`. |
+| Tabs/Segmented control | Move the selected indicator with a continuous transform over `320ms`; fade content over `160ms` only when needed. |
+| Toast | Rise from bottom with opacity `0 -> 1`, y `14px -> 0`, `320ms`; dismiss toward the edge over `200ms`. |
+| Form field | Focus ring, label, and helper text animate through color, opacity, and tiny y shifts over `160ms`; do not move the input box. |
+| List item | Insert with opacity `0 -> 1`, y `10px -> 0`, stagger `35ms`; removal fades first, then collapses space. |
+| Loading | Use stable skeletons with a soft pulse around `1400ms`; loaded content fades in under `160ms`. |
+
 ## Scroll
 
 - Use gentle reveal only for editorial or marketing content.

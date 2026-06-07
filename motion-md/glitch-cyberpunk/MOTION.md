@@ -43,6 +43,21 @@ Motion should feel electric, unstable, neon, and digital. Use quick cuts, scanli
 - Use scanline reveals and clipped section wipes.
 - Do not glitch every element; reserve glitches for headings, CTAs, and key visuals.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover intensifies neon glow and triggers one `40ms` to `80ms` x-offset glitch; press uses hard cut scale `0.96 -> 1`. |
+| Card | Hover flickers border once, raises noise opacity, and may add RGB split for `80ms`; settle with `--motion-ease-neon`. |
+| Dialog | Enter with clipped wipe, opacity flicker, and final settle over `360ms`; overlay should not flash full-screen. |
+| Popover/Menu | Reveal with scanline wipe and item flicker stagger `30ms`; keep text readable after the burst. |
+| Tabs | Indicator snaps with segmented underline; content changes through clipped reveal, not continuous distortion. |
+| Toast/Alert | Use neon border flash for one hit, then stable state; critical alerts must remain legible and non-flashing. |
+| Form field | Focus can show scanline underline and glow over `160ms`; validation errors may glitch once, never while typing continuously. |
+| Data panel | Use clipped panel reveals and subtle grid scan; avoid glitching dense numbers or code blocks. |
+| Progress/Loader | Linear scan or terminal-style cursor blink; keep blink rate accessible and pause on completion. |
+| Media | RGB split is allowed only for key visuals and should resolve within `120ms`. |
+
 ## Reduced Motion
 
 - Disable flicker, rapid displacement, RGB split, and scanline movement.

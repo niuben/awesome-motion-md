@@ -252,6 +252,21 @@ Rules:
 - Navigation drawer enters from the left in left-to-right layouts.
 - Avoid using this pattern for full screen hierarchy navigation.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover uses fast spatial lift `translateY(-2px) scale(1.02)` and effects changes; press scales to `0.96` for `50ms` to `100ms`. |
+| Card | Enter with default spatial spring; hover lifts `-6px`, scale `1.01`, and increases shadow via effects token. |
+| Dialog | Enter with opacity, scale `0.94 -> 1`, and y `24px -> 0` using default spatial/effects tokens; exit faster over `200ms`. |
+| Menu/Popover | Grow from trigger origin with fast spatial scale and default effects opacity; item highlight uses effects token only. |
+| Sheet/Drawer | Slide from owning edge with `motion.spring.slow.spatial` for large surfaces; inner content enters with `40ms` stagger. |
+| Tabs | Indicator moves with default spatial spring; content fades with effects token and optional x movement under `16px`. |
+| Snackbar/Toast | Rise from edge with fast spatial motion and fade with default effects; dismiss toward owning edge. |
+| Form field | Floating label, focus ring, helper text, and validation messages use effects tokens; layout should remain stable. |
+| Switch/Checkbox | Toggle handle moves with fast spatial token; checkmark opacity and color use fast effects token. |
+| List/Reorder | New items enter with y `16px -> 0`; removed items fade before space collapses; reordered items animate as a group. |
+
 ## Exit Animations
 
 Exit motion should require less attention than entrance motion.

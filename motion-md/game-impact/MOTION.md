@@ -44,6 +44,21 @@ Motion should feel punchy, energetic, and rewarding. Use anticipation, overshoot
 - Use explosive stagger for showcase pages.
 - Maximum total stagger delay `500ms`.
 
+## Component Motion
+
+| Component | Motion |
+| --- | --- |
+| Button | Hover scales `1.08` with glow; press compresses to `0.9`, then rebounds to `1.06` before settling. |
+| Card | Hover lifts `-10px`, rotates `1deg` to `3deg`, and intensifies shadow; selected cards may pop with particles. |
+| Dialog | Enter with anticipation scale `0.86 -> 1.08 -> 1`, opacity `0 -> 1`, `420ms`; overlay can flash subtly on reward moments. |
+| Popover/Menu | Items pop in with `40ms` stagger; active item can punch scale `1.04` and glow. |
+| Inventory/Badge | Pickup uses arc motion, scale overshoot, and short particle burst under `700ms`. |
+| Tabs | Indicator slams or snaps to target with overshoot; content swaps with quick scale `0.96 -> 1`. |
+| Toast/Achievement | Use combo sequence: pop, shine, count-up, then settle within `700ms`; allow manual dismissal. |
+| Form field | Keep typing calm; validation success can pulse once, errors may shake max `4px` for `120ms`. |
+| Progress/Score | Animate count-up and meter fill with impact ticks; avoid rapid flashing. |
+| Loading | Use playful loops sparingly; pause or simplify when content is ready or reduced motion is active. |
+
 ## Reduced Motion
 
 - Disable shake, particles, bounce, and large scale changes.
