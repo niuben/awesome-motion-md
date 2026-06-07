@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Glitch Cyberpunk Preview</title>
+    <style>
+      :root {
+        --bg: #05000b;
+        --fg: #f7f7ff;
+        --cyan: #00f5ff;
+        --pink: #ff2bd6;
+        --lime: #b7ff2a;
+        --motion-ease-cut: steps(2, end);
+        --motion-ease-neon: cubic-bezier(0.16, 1, 0.3, 1);
+        --motion-glitch-hit: 80ms;
+        --motion-fast: 160ms;
+        --motion-default: 360ms;
+        --motion-loop: 2200ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fg);
+        font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+        background:
+          radial-gradient(
+            circle at 20% 10%,
+            rgba(255, 43, 214, 0.28),
+            transparent 28rem
+          ),
+          radial-gradient(
+            circle at 80% 0,
+            rgba(0, 245, 255, 0.24),
+            transparent 30rem
+          ),
+          linear-gradient(135deg, #05000b, #090014 58%, #001319);
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.06) 0 1px,
+          transparent 1px 4px
+        );
+        mix-blend-mode: overlay;
+        opacity: 0.32;
+        pointer-events: none;
+        animation: scan var(--motion-loop) linear infinite;
+      }
+      main {
+        width: min(1160px, calc(100% - 32px));
+        margin: auto;
+        padding: 56px 0;
+      }
+      .hero {
+        padding: 72px 0 34px;
+        position: relative;
+      }
+      .tag {
+        color: var(--lime);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 12px;
+        text-shadow: 0 0 14px var(--lime);
+      }
+      h1 {
+        max-width: 900px;
+        margin: 14px 0;
+        font-size: clamp(48px, 10vw, 128px);
+        line-height: 0.82;
+        text-transform: uppercase;
+        letter-spacing: -0.07em;
+        text-shadow:
+          3px 0 var(--cyan),
+          -3px 0 var(--pink);
+        animation: glitch-title var(--motion-default) var(--motion-ease-cut);
+      }
+      .lede {
+        max-width: 640px;
+        color: #c7faff;
+        line-height: 1.7;
+        font-size: 18px;
+      }
+      .actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      button {
+        position: relative;
+        border: 1px solid var(--cyan);
+        background: rgba(0, 245, 255, 0.08);
+        color: var(--fg);
+        padding: 13px 20px;
+        font: inherit;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        box-shadow:
+          0 0 24px rgba(0, 245, 255, 0.25),
+          inset 0 0 18px rgba(0, 245, 255, 0.08);
+        clip-path: polygon(
+          9px 0,
+          100% 0,
+          100% calc(100% - 9px),
+          calc(100% - 9px) 100%,
+          0 100%,
+          0 9px
+        );
+        transition:
+          box-shadow var(--motion-fast),
+          transform var(--motion-glitch-hit) var(--motion-ease-cut),
+          border-color var(--motion-fast);
+      }
+      button:hover {
+        transform: translateX(1px);
+        border-color: var(--pink);
+        box-shadow:
+          0 0 34px rgba(255, 43, 214, 0.52),
+          inset 0 0 24px rgba(255, 43, 214, 0.14);
+      }
+      button::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--cyan),
+          transparent
+        );
+        transform: translateX(-120%);
+        opacity: 0.45;
+      }
+      button:hover::after {
+        animation: sweep 360ms var(--motion-ease-neon);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 48px;
+      }
+      .card {
+        min-height: 300px;
+        border: 1px solid rgba(0, 245, 255, 0.5);
+        background: linear-gradient(
+          135deg,
+          rgba(0, 245, 255, 0.09),
+          rgba(255, 43, 214, 0.09)
+        );
+        padding: 22px;
+        clip-path: polygon(
+          18px 0,
+          100% 0,
+          100% calc(100% - 18px),
+          calc(100% - 18px) 100%,
+          0 100%,
+          0 18px
+        );
+        box-shadow: 0 0 40px rgba(0, 245, 255, 0.16);
+        opacity: 0;
+        transform: translateY(18px);
+        animation: card-in var(--motion-default) var(--motion-ease-neon)
+          forwards;
+        transition:
+          border-color var(--motion-fast),
+          filter var(--motion-fast),
+          transform var(--motion-glitch-hit) var(--motion-ease-cut);
+      }
+      .card:nth-child(2) {
+        animation-delay: 45ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 90ms;
+      }
+      .card:hover {
+        transform: translateY(-4px) translateX(1px);
+        border-color: var(--pink);
+        filter: saturate(1.45);
+      }
+      .metric {
+        font-size: 56px;
+        margin-top: 84px;
+        color: var(--cyan);
+        text-shadow: 0 0 20px var(--cyan);
+      }
+      .card p {
+        color: #d6f7ff;
+        line-height: 1.55;
+      }
+      dialog {
+        width: min(540px, calc(100% - 32px));
+        border: 1px solid var(--pink);
+        background: #08000f;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 0 80px rgba(255, 43, 214, 0.42);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.78);
+        backdrop-filter: blur(5px);
+      }
+      dialog[open] {
+        animation: modal var(--motion-default) var(--motion-ease-cut);
+      }
+      .modal-body {
+        padding: 26px;
+      }
+      @keyframes glitch-title {
+        0%,
+        22% {
+          opacity: 0;
+          transform: translateX(-8px);
+        }
+        24% {
+          opacity: 1;
+          transform: translateX(6px);
+        }
+        42% {
+          transform: translateX(-4px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes scan {
+        to {
+          transform: translateY(12px);
+        }
+      }
+      @keyframes sweep {
+        to {
+          transform: translateX(120%);
+        }
+      }
+      @keyframes card-in {
+        from {
+          clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          transform: translateX(-8px);
+          filter: hue-rotate(90deg);
+        }
+      }
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: clamp(44px, 16vw, 82px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Glitch Cyberpunk</div>
+        <h1>Neon systems under beautiful failure.</h1>
+        <p class="lede">
+          Same button, cards, and dialog, rewritten as clipped neon interfaces
+          with short glitch bursts and safe scanline energy.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button><button>Run breach</button>
+        </div>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">80ms</div>
+          <p>Short displacement bursts, never high-frequency flashing.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Card</div>
+          <div class="metric">RGB</div>
+          <p>Clipped panels settle after one electric border flash.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">SCAN</div>
+          <p>The modal cuts in like a terminal overlay.</p>
+        </article>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Access window</h2>
+        <p class="lede">
+          Neon styling remains static for reading; motion is brief and
+          intentional.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apple Fluid Preview</title>
+    <style>
+      :root {
+        --bg: #f4f5f7;
+        --fg: #141416;
+        --muted: #6d717b;
+        --glass: rgba(255, 255, 255, 0.68);
+        --motion-ease-fluid: cubic-bezier(0.22, 1, 0.36, 1);
+        --motion-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+        --motion-fast: 160ms;
+        --motion-default: 320ms;
+        --motion-slow: 560ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fg);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+          sans-serif;
+        background:
+          radial-gradient(
+            circle at 20% 0,
+            rgba(94, 145, 255, 0.38),
+            transparent 28rem
+          ),
+          radial-gradient(
+            circle at 80% 12%,
+            rgba(255, 181, 218, 0.45),
+            transparent 30rem
+          ),
+          linear-gradient(180deg, #fbfbfd, #e9ecf3);
+        overflow-x: hidden;
+      }
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: auto;
+        padding: 54px 0;
+      }
+      .hero {
+        padding: 78px 0 36px;
+        opacity: 0;
+        transform: translateY(28px);
+        animation: hero var(--motion-slow) var(--motion-ease-fluid) forwards;
+      }
+      .tag {
+        color: var(--muted);
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        max-width: 820px;
+        margin: 14px 0;
+        font-size: clamp(48px, 9vw, 118px);
+        line-height: 0.88;
+        letter-spacing: -0.075em;
+      }
+      .lede {
+        max-width: 630px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        background: #101114;
+        color: white;
+        padding: 13px 20px;
+        font:
+          600 15px -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        cursor: pointer;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+        transition:
+          transform var(--motion-fast) var(--motion-ease-fluid),
+          box-shadow var(--motion-fast),
+          background var(--motion-fast);
+      }
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      .soft {
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--fg);
+        backdrop-filter: blur(22px);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.9fr 0.9fr;
+        gap: 18px;
+        margin-top: 48px;
+      }
+      .card {
+        min-height: 310px;
+        border: 1px solid rgba(255, 255, 255, 0.78);
+        border-radius: 34px;
+        background: var(--glass);
+        backdrop-filter: blur(28px);
+        box-shadow:
+          0 30px 90px rgba(31, 45, 71, 0.16),
+          inset 0 1px rgba(255, 255, 255, 0.7);
+        padding: 24px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: card var(--motion-default) var(--motion-ease-fluid) forwards;
+        transition:
+          transform var(--motion-default) var(--motion-ease-fluid),
+          box-shadow var(--motion-default),
+          background var(--motion-default);
+      }
+      .card:first-child {
+        grid-row: span 2;
+      }
+      .card:nth-child(2) {
+        animation-delay: 45ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 90ms;
+      }
+      .card:hover {
+        transform: translateY(-4px) scale(1.005);
+        box-shadow:
+          0 38px 110px rgba(31, 45, 71, 0.22),
+          inset 0 1px rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.78);
+      }
+      .orb {
+        height: 170px;
+        border-radius: 34px;
+        background: radial-gradient(
+          circle at 35% 25%,
+          #fff,
+          rgba(120, 162, 255, 0.85) 34%,
+          rgba(255, 181, 218, 0.78) 70%
+        );
+        margin: 36px 0 18px;
+        animation: float 5s var(--motion-ease-fluid) infinite alternate;
+      }
+      .metric {
+        font-size: 54px;
+        letter-spacing: -0.06em;
+        margin-top: 46px;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      dialog {
+        width: min(540px, calc(100% - 32px));
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(30px);
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 34px 120px rgba(31, 45, 71, 0.28);
+      }
+      dialog::backdrop {
+        background: rgba(235, 238, 245, 0.58);
+        backdrop-filter: blur(12px);
+      }
+      dialog[open] {
+        animation: modal var(--motion-default) var(--motion-ease-enter);
+      }
+      .modal-body {
+        padding: 28px;
+      }
+      @keyframes hero {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes card {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes float {
+        to {
+          transform: translateY(-10px) scale(1.015);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.985);
+        }
+      }
+      @media (max-width: 780px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .card:first-child {
+          grid-row: auto;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Apple Fluid</div>
+        <h1>Spatial motion that feels directly touched.</h1>
+        <p class="lede">
+          Buttons, cards, and dialogs move with premium continuity, glass depth,
+          and soft deceleration instead of spectacle.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button
+          ><button class="soft">View surface</button>
+        </div>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <div class="tag">Card</div>
+          <div class="orb"></div>
+          <p>
+            Large surfaces preserve context through scale, opacity, and
+            continuous depth.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">.96</div>
+          <p>Press feedback compresses the surface like direct manipulation.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">560</div>
+          <p>The modal arrives softly from nearby space.</p>
+        </article>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Fluid sheet</h2>
+        <p class="lede">
+          A calm panel with blur, scale, opacity, and no aggressive motion.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

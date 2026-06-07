@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GSAP Cinematic Preview</title>
+    <style>
+      :root {
+        --bg: #070707;
+        --fg: #fff7ec;
+        --muted: #b9aa96;
+        --amber: #ffb347;
+        --red: #ff3d2e;
+        --motion-ease-cinematic: cubic-bezier(0.77, 0, 0.175, 1);
+        --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --motion-hit: 180ms;
+        --motion-scene: 800ms;
+        --motion-ambient: 1600ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fg);
+        font-family:
+          "Arial Narrow", Inter, ui-sans-serif, system-ui, sans-serif;
+        background: #070707;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(255, 179, 71, 0.18),
+            transparent 30%,
+            transparent 70%,
+            rgba(255, 61, 46, 0.16)
+          ),
+          radial-gradient(
+            circle at 50% 10%,
+            rgba(255, 255, 255, 0.18),
+            transparent 34rem
+          );
+        pointer-events: none;
+      }
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: auto;
+        padding: 52px 0;
+      }
+      .hero {
+        min-height: 74vh;
+        display: grid;
+        align-content: center;
+        position: relative;
+      }
+      .tag {
+        color: var(--amber);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      .line {
+        display: block;
+        overflow: hidden;
+      }
+      h1 {
+        max-width: 960px;
+        margin: 18px 0;
+        font-size: clamp(50px, 10vw, 132px);
+        line-height: 0.82;
+        letter-spacing: -0.065em;
+        text-transform: uppercase;
+      }
+      .line span {
+        display: block;
+        transform: translateY(110%);
+        opacity: 0;
+        animation: title var(--motion-scene) var(--motion-ease-cinematic)
+          forwards;
+      }
+      .line:nth-child(2) span {
+        animation-delay: 60ms;
+      }
+      .line:nth-child(3) span {
+        animation-delay: 120ms;
+      }
+      .lede {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.7;
+        opacity: 0;
+        animation: fade var(--motion-scene) var(--motion-ease-out) 360ms
+          forwards;
+      }
+      .actions {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        opacity: 0;
+        animation: cta 400ms var(--motion-ease-out) 560ms forwards;
+      }
+      button {
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 0;
+        background: var(--fg);
+        color: #080808;
+        padding: 14px 22px;
+        font:
+          800 14px Inter,
+          sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+        transition:
+          transform var(--motion-hit) var(--motion-ease-out),
+          filter var(--motion-hit),
+          background var(--motion-hit),
+          color var(--motion-hit);
+      }
+      button:hover {
+        transform: translateY(-6px);
+        background: #080808;
+        color: var(--fg);
+        filter: drop-shadow(0 0 24px rgba(255, 179, 71, 0.55));
+      }
+      .ghost {
+        background: transparent;
+        color: var(--fg);
+      }
+      .scene {
+        position: relative;
+        margin-top: 20px;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+      .mask {
+        height: 360px;
+        border-radius: 4px;
+        background: linear-gradient(135deg, #220f08, #9e2b1f 48%, #ffb347);
+        clip-path: inset(0 100% 0 0);
+        animation: mask var(--motion-scene) var(--motion-ease-cinematic) 260ms
+          forwards;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: -90px;
+        position: relative;
+        z-index: 2;
+      }
+      .card {
+        min-height: 290px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(10, 10, 10, 0.72);
+        backdrop-filter: blur(18px);
+        padding: 24px;
+        transform: translateY(70px);
+        opacity: 0;
+        animation: card var(--motion-scene) var(--motion-ease-out) forwards;
+        transition:
+          transform var(--motion-scene) var(--motion-ease-out),
+          border-color var(--motion-hit);
+      }
+      .card:nth-child(2) {
+        animation-delay: 120ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 180ms;
+      }
+      .card:hover {
+        transform: translateY(-10px) rotateX(5deg) rotateY(-6deg);
+        border-color: var(--amber);
+      }
+      .metric {
+        font-size: 58px;
+        letter-spacing: -0.06em;
+        margin-top: 76px;
+        color: var(--amber);
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.62;
+      }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 1px solid rgba(255, 179, 71, 0.5);
+        background: #0c0a08;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 0 120px rgba(255, 61, 46, 0.24);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(6px);
+      }
+      dialog[open] {
+        animation: modal var(--motion-scene) var(--motion-ease-cinematic);
+      }
+      .modal-body {
+        padding: 30px;
+      }
+      @keyframes title {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fade {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes cta {
+        from {
+          transform: scale(0.92);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes mask {
+        to {
+          clip-path: inset(0);
+        }
+      }
+      @keyframes card {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          clip-path: inset(0 0 0 100%);
+        }
+      }
+      @media (max-width: 820px) {
+        .grid {
+          grid-template-columns: 1fr;
+          margin-top: 18px;
+        }
+        .mask {
+          height: 260px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">GSAP Cinematic</div>
+        <h1>
+          <span class="line"><span>Directed</span></span
+          ><span class="line"><span>motion for</span></span
+          ><span class="line"><span>dramatic launches.</span></span>
+        </h1>
+        <p class="lede">
+          The shared components are staged like a timeline: title lines, visual
+          mask, cards, then dialog.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button
+          ><button class="ghost">Play scene</button>
+        </div>
+      </section>
+      <section class="scene">
+        <div class="mask"></div>
+        <div class="grid">
+          <article class="card">
+            <div class="tag">Button</div>
+            <div class="metric">8px</div>
+            <p>Hover behaves like a magnetic pull in a hero moment.</p>
+          </article>
+          <article class="card">
+            <div class="tag">Card</div>
+            <div class="metric">3D</div>
+            <p>Cards reveal after the scene plate and tilt on hover.</p>
+          </article>
+          <article class="card">
+            <div class="tag">Dialog</div>
+            <div class="metric">wipe</div>
+            <p>Panels use camera-like masks and strong directional rhythm.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Cinematic overlay</h2>
+        <p class="lede">
+          A single dominant wipe direction keeps the scene readable.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Material Expressive Preview</title>
+    <style>
+      :root {
+        --motion-spatial-fast: cubic-bezier(0.42, 1.67, 0.21, 0.9);
+        --motion-spatial-default: cubic-bezier(0.38, 1.21, 0.22, 1);
+        --motion-spatial-slow: cubic-bezier(0.39, 1.29, 0.35, 0.98);
+        --motion-effects-fast: cubic-bezier(0.31, 0.94, 0.34, 1);
+        --motion-effects-default: cubic-bezier(0.34, 0.8, 0.34, 1);
+        --motion-duration-spatial-fast: 350ms;
+        --motion-duration-spatial-default: 500ms;
+        --motion-duration-spatial-slow: 650ms;
+        --motion-duration-effects-fast: 150ms;
+        --motion-duration-effects-default: 200ms;
+        --bg: #fff7fb;
+        --fg: #231722;
+        --muted: #705f6d;
+        --pink: #ff4fa3;
+        --purple: #7c3aed;
+        --mint: #28d6a0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fg);
+        font-family: Roboto, Inter, system-ui, sans-serif;
+        background:
+          radial-gradient(
+            circle at 20% 5%,
+            rgba(255, 79, 163, 0.28),
+            transparent 27rem
+          ),
+          radial-gradient(
+            circle at 88% 12%,
+            rgba(40, 214, 160, 0.24),
+            transparent 26rem
+          ),
+          #fff7fb;
+      }
+      main {
+        width: min(1140px, calc(100% - 32px));
+        margin: auto;
+        padding: 56px 0;
+      }
+      .hero {
+        padding: 74px 0 38px;
+        opacity: 0;
+        transform: translateY(24px);
+        animation: main-in var(--motion-duration-spatial-default)
+          var(--motion-spatial-default) forwards;
+      }
+      .tag {
+        color: var(--purple);
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+      h1 {
+        max-width: 860px;
+        margin: 14px 0;
+        font-size: clamp(48px, 9vw, 112px);
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+      }
+      .lede {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        background: var(--fg);
+        color: white;
+        padding: 14px 21px;
+        font:
+          800 15px Roboto,
+          sans-serif;
+        cursor: pointer;
+        box-shadow: 0 14px 34px rgba(35, 23, 34, 0.18);
+        transition:
+          transform var(--motion-duration-spatial-fast)
+            var(--motion-spatial-fast),
+          box-shadow var(--motion-duration-effects-fast)
+            var(--motion-effects-fast),
+          background var(--motion-duration-effects-fast)
+            var(--motion-effects-fast);
+      }
+      button:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 22px 48px rgba(124, 58, 237, 0.24);
+        background: var(--purple);
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      .chip {
+        background: white;
+        color: var(--fg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 18px;
+        margin-top: 50px;
+      }
+      .card {
+        min-height: 310px;
+        border-radius: 36px;
+        background: white;
+        padding: 24px;
+        box-shadow: 0 24px 80px rgba(124, 58, 237, 0.12);
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        animation: card var(--motion-duration-spatial-default)
+          var(--motion-spatial-default) forwards;
+        transition:
+          transform var(--motion-duration-spatial-default)
+            var(--motion-spatial-default),
+          box-shadow var(--motion-duration-effects-default)
+            var(--motion-effects-default),
+          border-radius var(--motion-duration-spatial-fast)
+            var(--motion-spatial-fast);
+      }
+      .card:nth-child(2) {
+        animation-delay: 40ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 80ms;
+      }
+      .card:hover {
+        transform: translateY(-6px) scale(1.01);
+        border-radius: 44px;
+        box-shadow: 0 32px 100px rgba(255, 79, 163, 0.2);
+      }
+      .metric {
+        font-size: 56px;
+        letter-spacing: -0.06em;
+        margin-top: 78px;
+      }
+      .blob {
+        height: 150px;
+        border-radius: 44px;
+        background: linear-gradient(
+          135deg,
+          var(--pink),
+          var(--purple),
+          var(--mint)
+        );
+        animation: morph var(--motion-duration-spatial-slow)
+          var(--motion-spatial-slow) infinite alternate;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 0;
+        border-radius: 36px;
+        background: white;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 30px 120px rgba(35, 23, 34, 0.25);
+      }
+      dialog::backdrop {
+        background: rgba(35, 23, 34, 0.32);
+        backdrop-filter: blur(8px);
+      }
+      dialog[open] {
+        animation: dialog-in var(--motion-duration-spatial-default)
+          var(--motion-spatial-default);
+      }
+      .modal-body {
+        padding: 28px;
+      }
+      @keyframes main-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes card {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes morph {
+        to {
+          border-radius: 72px 36px 64px 42px;
+          transform: translateY(-8px) scale(1.025);
+        }
+      }
+      @keyframes dialog-in {
+        from {
+          opacity: 0;
+          transform: translateY(32px) scale(0.96);
+        }
+      }
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Material Expressive</div>
+        <h1>Spring-like surfaces with expressive clarity.</h1>
+        <p class="lede">
+          Buttons, cards, and dialogs use spatial tokens for transform and
+          effects tokens for color, shadow, and opacity.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button
+          ><button class="chip">Toggle chip</button>
+        </div>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <div class="tag">Surface</div>
+          <div class="blob"></div>
+          <p>
+            Shape and position use spatial motion, while color remains
+            non-overshooting.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">350</div>
+          <p>Small controls use fast spatial spring-like motion.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">500</div>
+          <p>Dialogs enter as larger spatial surfaces with clear focus.</p>
+        </article>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Expressive sheet</h2>
+        <p class="lede">
+          Reduced motion support is built in, and focus is preserved.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

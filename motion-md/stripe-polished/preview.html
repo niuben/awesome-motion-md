@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stripe Polished Preview</title>
+    <style>
+      :root {
+        --bg: #0a1020;
+        --fg: #f7fbff;
+        --muted: #a9b7d0;
+        --violet: #8b5cf6;
+        --cyan: #2dd4bf;
+        --pink: #fb7185;
+        --motion-ease-polished: cubic-bezier(0.22, 1, 0.36, 1);
+        --motion-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+        --motion-fast: 180ms;
+        --motion-default: 420ms;
+        --motion-slow: 700ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--fg);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        background: #0a1020;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -20%;
+        background: conic-gradient(
+          from 90deg at 50% 50%,
+          var(--violet),
+          var(--cyan),
+          var(--pink),
+          var(--violet)
+        );
+        filter: blur(90px);
+        opacity: 0.35;
+        animation: gradient 14s var(--motion-ease-soft) infinite alternate;
+        pointer-events: none;
+      }
+      main {
+        position: relative;
+        width: min(1160px, calc(100% - 32px));
+        margin: auto;
+        padding: 58px 0;
+      }
+      .hero {
+        padding: 82px 0 36px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: hero var(--motion-slow) var(--motion-ease-polished) forwards;
+      }
+      .tag {
+        color: #84ffe9;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        max-width: 850px;
+        margin: 14px 0;
+        font-size: clamp(48px, 9vw, 112px);
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+      }
+      .lede {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      button {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: linear-gradient(100deg, #7c3aed, #06b6d4);
+        color: white;
+        padding: 13px 20px;
+        font:
+          700 15px Inter,
+          sans-serif;
+        cursor: pointer;
+        box-shadow: 0 16px 50px rgba(45, 212, 191, 0.22);
+        background-size: 200% 100%;
+        transition:
+          transform var(--motion-fast) var(--motion-ease-polished),
+          box-shadow var(--motion-fast),
+          background-position var(--motion-fast);
+      }
+      button:hover {
+        transform: translateY(-2px);
+        background-position: 100% 0;
+        box-shadow: 0 22px 70px rgba(139, 92, 246, 0.35);
+      }
+      button:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .ghost {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(18px);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 50px;
+        perspective: 1200px;
+      }
+      .card {
+        min-height: 320px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.14),
+          rgba(255, 255, 255, 0.055)
+        );
+        backdrop-filter: blur(24px);
+        box-shadow:
+          0 24px 90px rgba(0, 0, 0, 0.25),
+          inset 0 1px rgba(255, 255, 255, 0.18);
+        padding: 24px;
+        opacity: 0;
+        transform: translateY(36px);
+        animation: card var(--motion-default) var(--motion-ease-polished)
+          forwards;
+        transition:
+          transform var(--motion-default) var(--motion-ease-polished),
+          box-shadow var(--motion-default),
+          border-color var(--motion-default);
+      }
+      .card:nth-child(2) {
+        animation-delay: 60ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 120ms;
+      }
+      .card:hover {
+        transform: translateY(-8px) rotateX(2deg) rotateY(-3deg);
+        border-color: rgba(45, 212, 191, 0.48);
+        box-shadow:
+          0 36px 120px rgba(45, 212, 191, 0.2),
+          inset 0 1px rgba(255, 255, 255, 0.24);
+      }
+      .metric {
+        font-size: 56px;
+        letter-spacing: -0.06em;
+        margin-top: 84px;
+        background: linear-gradient(90deg, #fff, #80ffe9);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.62;
+      }
+      .code {
+        font-family: ui-monospace, Menlo, monospace;
+        background: rgba(0, 0, 0, 0.28);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 18px;
+        padding: 16px;
+        margin-top: 50px;
+        color: #b5ffe9;
+      }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 28px;
+        background: #111a31;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 28px 110px rgba(0, 0, 0, 0.55);
+      }
+      dialog::backdrop {
+        background: rgba(3, 7, 18, 0.72);
+        backdrop-filter: blur(10px);
+      }
+      dialog[open] {
+        animation: modal var(--motion-default) var(--motion-ease-polished);
+      }
+      .modal-body {
+        padding: 28px;
+      }
+      @keyframes gradient {
+        to {
+          transform: rotate(18deg) scale(1.08);
+        }
+      }
+      @keyframes hero {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes card {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          clip-path: inset(0 0 100% 0);
+          transform: translateY(18px);
+        }
+      }
+      @media (max-width: 800px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Stripe Polished</div>
+        <h1>Premium motion for conversion-grade interfaces.</h1>
+        <p class="lede">
+          The shared button, card, and dialog set becomes layered, commercial,
+          and technically polished with gradient depth.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button
+          ><button class="ghost">Start checkout</button>
+        </div>
+      </section>
+      <section class="grid">
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">180ms</div>
+          <p>Gradient position, small lift, stronger shadow.</p>
+          <div class="code">hover.translateY(-2px)</div>
+        </article>
+        <article class="card">
+          <div class="tag">Card</div>
+          <div class="metric">-8px</div>
+          <p>
+            Product cards reveal in restrained stagger and lift with
+            perspective.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">mask</div>
+          <p>Panels prefer masked reveals and layered depth.</p>
+        </article>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Polished checkout layer</h2>
+        <p class="lede">
+          The modal opens cleanly with a mask-style reveal and premium contrast.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

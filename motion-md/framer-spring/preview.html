@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Framer Spring Preview</title>
+    <style>
+      :root {
+        --bg: #10131c;
+        --fg: #f7f4ff;
+        --muted: #b7b0ca;
+        --pink: #ff7ab6;
+        --blue: #7aa7ff;
+        --ease-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--fg);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        background:
+          radial-gradient(
+            circle at 15% 10%,
+            rgba(255, 122, 182, 0.3),
+            transparent 25rem
+          ),
+          radial-gradient(
+            circle at 80% 0,
+            rgba(122, 167, 255, 0.28),
+            transparent 25rem
+          ),
+          #10131c;
+      }
+      main {
+        width: min(1140px, calc(100% - 32px));
+        margin: auto;
+        padding: 56px 0;
+      }
+      .hero {
+        padding: 74px 0 36px;
+      }
+      .tag {
+        color: var(--pink);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        max-width: 840px;
+        margin: 14px 0;
+        font-size: clamp(48px, 9vw, 112px);
+        line-height: 0.88;
+        letter-spacing: -0.07em;
+        animation: spring-in 620ms var(--ease-bouncy) both;
+      }
+      .lede {
+        max-width: 630px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      button {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--pink), var(--blue));
+        color: white;
+        padding: 13px 19px;
+        font:
+          700 15px Inter,
+          sans-serif;
+        cursor: pointer;
+        transition:
+          transform 350ms var(--ease-bouncy),
+          box-shadow 200ms var(--ease-smooth);
+        box-shadow: 0 16px 54px rgba(122, 167, 255, 0.24);
+      }
+      button:hover {
+        transform: scale(1.03);
+      }
+      button:active {
+        transform: scale(0.95);
+      }
+      .stage {
+        position: relative;
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 18px;
+      }
+      .card {
+        min-height: 300px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(18px);
+        padding: 24px;
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+        animation: card 520ms var(--ease-bouncy) forwards;
+        transition:
+          transform 360ms var(--ease-bouncy),
+          background 200ms var(--ease-smooth),
+          border-color 200ms;
+      }
+      .card:nth-child(2) {
+        animation-delay: 35ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 70ms;
+      }
+      .card:hover {
+        transform: translateY(-5px) scale(1.015);
+        background: rgba(255, 255, 255, 0.11);
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      .metric {
+        font-size: 54px;
+        letter-spacing: -0.06em;
+        margin-top: 82px;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .dragger {
+        width: 84px;
+        height: 84px;
+        border-radius: 28px;
+        background: linear-gradient(135deg, #fff, var(--pink));
+        box-shadow: 0 20px 60px rgba(255, 122, 182, 0.35);
+        animation: orbit 2.2s var(--ease-bouncy) infinite alternate;
+      }
+      dialog {
+        width: min(540px, calc(100% - 32px));
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 30px;
+        background: #171b28;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 30px 110px rgba(0, 0, 0, 0.56);
+      }
+      dialog::backdrop {
+        background: rgba(5, 6, 10, 0.7);
+        backdrop-filter: blur(8px);
+      }
+      dialog[open] {
+        animation: modal 480ms var(--ease-bouncy);
+      }
+      .modal-body {
+        padding: 28px;
+      }
+      @keyframes spring-in {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.96);
+        }
+      }
+      @keyframes card {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      @keyframes orbit {
+        to {
+          transform: translateX(120px) rotate(18deg);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.96);
+        }
+      }
+      @media (max-width: 780px) {
+        .stage {
+          grid-template-columns: 1fr;
+        }
+        .dragger {
+          animation: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Framer Spring</div>
+        <h1>Interruptible motion with physical surfaces.</h1>
+        <p class="lede">
+          The preview uses spring-like CSS fallbacks for buttons, cards, and
+          dialog behavior: bouncy spatial movement, calmer effects.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button><button>Release spring</button>
+        </div>
+      </section>
+      <section class="stage">
+        <article class="card">
+          <div class="tag">Gesture</div>
+          <div class="dragger"></div>
+          <p>
+            A playful object hints at direct manipulation and release rebound.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">.95</div>
+          <p>
+            Tap compresses, hover grows, and spatial transforms use spring
+            curves.
+          </p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">520</div>
+          <p>The modal enters as a surface settling into place.</p>
+        </article>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Spring surface</h2>
+        <p class="lede">
+          This panel uses a bouncy spatial entrance and restrained color
+          changes.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

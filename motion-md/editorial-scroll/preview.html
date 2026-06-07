@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editorial Scroll Preview</title>
+    <style>
+      :root {
+        --bg: #f3efe6;
+        --ink: #1f1b16;
+        --muted: #776f62;
+        --accent: #9b3d21;
+        --motion-ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+        --motion-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+        --motion-fast: 180ms;
+        --motion-default: 500ms;
+        --motion-slow: 900ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        background:
+          linear-gradient(90deg, rgba(31, 27, 22, 0.055) 1px, transparent 1px),
+          var(--bg);
+        background-size: 84px 84px;
+      }
+      main {
+        width: min(1120px, calc(100% - 32px));
+        margin: auto;
+        padding: 40px 0 80px;
+      }
+      .hero {
+        padding: 82px 0 58px;
+        border-bottom: 1px solid rgba(31, 27, 22, 0.18);
+        opacity: 0;
+        transform: translateY(40px);
+        animation: header var(--motion-slow) var(--motion-ease-editorial)
+          forwards;
+      }
+      .tag {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        color: var(--accent);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        max-width: 900px;
+        margin: 18px 0;
+        font-size: clamp(48px, 9vw, 116px);
+        line-height: 0.86;
+        letter-spacing: -0.055em;
+      }
+      .lede {
+        max-width: 690px;
+        color: var(--muted);
+        font-size: 22px;
+        line-height: 1.55;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+      button {
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--bg);
+        padding: 12px 18px;
+        font:
+          700 14px ui-sans-serif,
+          system-ui;
+        cursor: pointer;
+        transition:
+          color var(--motion-fast),
+          background var(--motion-fast),
+          transform var(--motion-fast);
+      }
+      button:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+      button.secondary {
+        background: transparent;
+        color: var(--ink);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 36px;
+        margin-top: 54px;
+      }
+      .visual {
+        position: sticky;
+        top: 24px;
+        height: 600px;
+        border-radius: 34px;
+        overflow: hidden;
+        background: linear-gradient(160deg, #33190f, #c46535 48%, #f3c28d);
+        box-shadow: 0 34px 100px rgba(69, 38, 20, 0.28);
+        animation: image var(--motion-slow) var(--motion-ease-soft) both;
+      }
+      .visual::before {
+        content: "";
+        position: absolute;
+        inset: -8%;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(255, 255, 255, 0.65),
+          transparent 24rem
+        );
+        animation: parallax 7s var(--motion-ease-soft) infinite alternate;
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      .card {
+        min-height: 230px;
+        border-top: 1px solid rgba(31, 27, 22, 0.24);
+        padding: 22px 0;
+        opacity: 0;
+        transform: translateY(24px);
+        animation: group var(--motion-default) var(--motion-ease-editorial)
+          forwards;
+      }
+      .card:nth-child(2) {
+        animation-delay: 120ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 240ms;
+      }
+      .metric {
+        font-size: 58px;
+        letter-spacing: -0.05em;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.72;
+      }
+      .card:hover .metric {
+        color: var(--accent);
+      }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 0;
+        border-radius: 24px;
+        background: #fffaf0;
+        color: var(--ink);
+        padding: 0;
+        box-shadow: 0 30px 100px rgba(31, 27, 22, 0.36);
+      }
+      dialog::backdrop {
+        background: rgba(31, 27, 22, 0.38);
+        backdrop-filter: blur(6px);
+      }
+      dialog[open] {
+        animation: modal var(--motion-default) var(--motion-ease-editorial);
+      }
+      .modal-body {
+        padding: 30px;
+      }
+      @keyframes header {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes group {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes image {
+        from {
+          clip-path: inset(100% 0 0 0);
+          transform: scale(1.06);
+        }
+      }
+      @keyframes parallax {
+        to {
+          transform: translateY(-8%);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          transform: translateY(24px) scale(0.96);
+        }
+      }
+      @media (max-width: 840px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .visual {
+          position: relative;
+          height: 360px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="tag">Editorial Scroll</div>
+        <h1>Motion paced like a visual essay.</h1>
+        <p class="lede">
+          The same button, card, and dialog components become a narrative page
+          with grouped reveals, a sticky visual moment, and readable timing.
+        </p>
+        <div class="actions">
+          <button data-open>Open modal</button
+          ><button class="secondary">Read chapter</button>
+        </div>
+      </section>
+      <section class="layout">
+        <div class="visual"></div>
+        <div class="grid">
+          <article class="card">
+            <div class="tag">Button</div>
+            <div class="metric">180ms</div>
+            <p>
+              Links and actions draw attention without interrupting reading
+              flow.
+            </p>
+          </article>
+          <article class="card">
+            <div class="tag">Card</div>
+            <div class="metric">500</div>
+            <p>
+              Text cards reveal as groups, not paragraph-by-paragraph
+              choreography.
+            </p>
+          </article>
+          <article class="card">
+            <div class="tag">Dialog</div>
+            <div class="metric">900</div>
+            <p>Large visual movement stays slow, soft, and story-supportive.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Editorial note</h2>
+        <p class="lede">
+          The modal is calm and readable, preserving the article's pace.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

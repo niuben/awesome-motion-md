@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fluent Productive Preview</title>
+    <style>
+      :root {
+        --bg: #f5f7fb;
+        --fg: #1f2937;
+        --muted: #667085;
+        --line: #d9dee8;
+        --accent: #2563eb;
+        --motion-ease-standard: cubic-bezier(0.1, 0.9, 0.2, 1);
+        --motion-fast: 120ms;
+        --motion-default: 200ms;
+        --motion-slow: 320ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--fg);
+        font-family: "Segoe UI", Inter, system-ui, sans-serif;
+        background: var(--bg);
+      }
+      main {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 100vh;
+      }
+      .nav {
+        background: #fff;
+        border-right: 1px solid var(--line);
+        padding: 22px;
+      }
+      .nav h3 {
+        margin: 0 0 18px;
+      }
+      .nav div {
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: var(--muted);
+        transition:
+          background var(--motion-fast),
+          color var(--motion-fast);
+      }
+      .nav div:hover,
+      .nav .active {
+        background: #eef4ff;
+        color: var(--accent);
+      }
+      .content {
+        padding: 34px;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        padding: 14px 16px;
+      }
+      .tag {
+        color: var(--accent);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        margin: 24px 0 8px;
+        font-size: clamp(38px, 6vw, 76px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+      }
+      .lede {
+        max-width: 650px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      button {
+        border: 1px solid #1d4ed8;
+        border-radius: 8px;
+        background: var(--accent);
+        color: white;
+        padding: 10px 14px;
+        font:
+          600 14px "Segoe UI",
+          sans-serif;
+        cursor: pointer;
+        transition:
+          background var(--motion-fast),
+          transform 80ms,
+          border-color var(--motion-fast);
+      }
+      button:hover {
+        background: #1d4ed8;
+      }
+      button:active {
+        transform: scale(0.98);
+      }
+      .secondary {
+        background: #fff;
+        color: var(--fg);
+        border-color: var(--line);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr 0.9fr;
+        gap: 16px;
+        margin-top: 28px;
+      }
+      .card {
+        min-height: 250px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: panel var(--motion-default) var(--motion-ease-standard)
+          forwards;
+        transition:
+          background var(--motion-fast),
+          border-color var(--motion-fast);
+      }
+      .card:nth-child(2) {
+        animation-delay: 25ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 50ms;
+      }
+      .card:hover {
+        background: #fbfdff;
+        border-color: #b9c7dd;
+      }
+      .metric {
+        font-size: 46px;
+        letter-spacing: -0.05em;
+        margin-top: 74px;
+      }
+      .rows {
+        margin-top: 34px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: #fff;
+        transition: background var(--motion-fast);
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .row:hover {
+        background: #f6f9ff;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      dialog {
+        width: min(540px, calc(100% - 32px));
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fff;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 24px 80px rgba(31, 41, 55, 0.22);
+      }
+      dialog::backdrop {
+        background: rgba(15, 23, 42, 0.34);
+      }
+      dialog[open] {
+        animation: modal var(--motion-default) var(--motion-ease-standard);
+      }
+      .modal-body {
+        padding: 24px;
+      }
+      @keyframes panel {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes modal {
+        from {
+          opacity: 0;
+          transform: translateY(8px) scale(0.98);
+          transform-origin: top right;
+        }
+      }
+      @media (max-width: 840px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <aside class="nav">
+        <h3>Workspace</h3>
+        <div class="active">Overview</div>
+        <div>Documents</div>
+        <div>Approvals</div>
+      </aside>
+      <section class="content">
+        <div class="topbar">
+          <div>
+            <div class="tag">Fluent Productive</div>
+            <strong>Stable toolbar, no decorative entrance</strong>
+          </div>
+          <div class="actions">
+            <button data-open>Open modal</button
+            ><button class="secondary">Filter</button>
+          </div>
+        </div>
+        <h1>Functional motion for focused work.</h1>
+        <p class="lede">
+          Buttons, cards, and dialogs clarify hierarchy with small distances,
+          short durations, and stable layouts.
+        </p>
+        <section class="grid">
+          <article class="card">
+            <div class="tag">Button</div>
+            <div class="metric">120ms</div>
+            <p>Control feedback is color-first and fast.</p>
+          </article>
+          <article class="card">
+            <div class="tag">Card</div>
+            <div class="metric">10px</div>
+            <p>Panels enter gently without disturbing workflow.</p>
+          </article>
+          <article class="card">
+            <div class="tag">Dialog</div>
+            <div class="metric">200</div>
+            <p>Menus and panels emerge from their trigger.</p>
+          </article>
+        </section>
+        <div class="rows">
+          <div class="row">
+            <span>Quarterly report</span><strong>Ready</strong>
+          </div>
+          <div class="row"><span>Access review</span><strong>Due</strong></div>
+          <div class="row">
+            <span>Policy update</span><strong>Draft</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Productive panel</h2>
+        <p class="lede">
+          Fast, layered, and predictable. Dismissal should be even faster.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>

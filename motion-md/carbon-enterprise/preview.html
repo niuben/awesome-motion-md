@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carbon Enterprise Preview</title>
+    <style>
+      :root {
+        --bg: #f4f4f4;
+        --fg: #161616;
+        --muted: #525252;
+        --line: #c6c6c6;
+        --blue: #0f62fe;
+        --motion-ease-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+        --motion-ease-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+        --motion-fast-01: 70ms;
+        --motion-fast-02: 110ms;
+        --motion-moderate-01: 150ms;
+        --motion-moderate-02: 240ms;
+        --motion-slow-01: 400ms;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--fg);
+        font-family: "IBM Plex Sans", Inter, Arial, sans-serif;
+        background: var(--bg);
+      }
+      header {
+        height: 48px;
+        background: #161616;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        font-weight: 600;
+      }
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: auto;
+        padding: 34px 0;
+      }
+      .tag {
+        color: var(--blue);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      h1 {
+        max-width: 860px;
+        margin: 18px 0 10px;
+        font-size: clamp(42px, 7vw, 92px);
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+      }
+      .lede {
+        max-width: 680px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .actions {
+        display: flex;
+        gap: 1px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      button {
+        border: 0;
+        background: var(--blue);
+        color: white;
+        padding: 13px 18px;
+        font:
+          600 14px "IBM Plex Sans",
+          sans-serif;
+        cursor: pointer;
+        transition:
+          background var(--motion-fast-02),
+          outline-color var(--motion-fast-02);
+      }
+      button:hover {
+        background: #0043ce;
+      }
+      button:active {
+        background: #002d9c;
+      }
+      .secondary {
+        background: #393939;
+      }
+      .dashboard {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        margin-top: 34px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .card {
+        min-height: 220px;
+        background: white;
+        padding: 18px;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: tile var(--motion-moderate-02) var(--motion-ease-productive)
+          forwards;
+      }
+      .card:nth-child(2) {
+        animation-delay: 30ms;
+      }
+      .card:nth-child(3) {
+        animation-delay: 60ms;
+      }
+      .card:nth-child(4) {
+        animation-delay: 90ms;
+      }
+      .card.wide {
+        grid-column: span 2;
+      }
+      .metric {
+        font-size: 50px;
+        letter-spacing: -0.05em;
+        margin-top: 54px;
+      }
+      .card p {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+      .chart {
+        height: 120px;
+        margin-top: 38px;
+        border-left: 2px solid #8d8d8d;
+        border-bottom: 2px solid #8d8d8d;
+        background: linear-gradient(
+          180deg,
+          transparent 72%,
+          rgba(15, 98, 254, 0.12) 72%
+        );
+      }
+      .bar {
+        display: inline-block;
+        width: 18%;
+        margin-right: 2%;
+        vertical-align: bottom;
+        background: var(--blue);
+        animation: bar var(--motion-slow-01) var(--motion-ease-expressive)
+          forwards;
+        transform-origin: bottom;
+        transform: scaleY(0);
+      }
+      .bar:nth-child(1) {
+        height: 35%;
+      }
+      .bar:nth-child(2) {
+        height: 68%;
+        animation-delay: 80ms;
+      }
+      .bar:nth-child(3) {
+        height: 48%;
+        animation-delay: 130ms;
+      }
+      .bar:nth-child(4) {
+        height: 82%;
+        animation-delay: 180ms;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 28px;
+        background: white;
+      }
+      td,
+      th {
+        border: 1px solid var(--line);
+        padding: 12px;
+        text-align: left;
+      }
+      tr:hover td {
+        background: #edf5ff;
+        transition: background var(--motion-fast-02);
+      }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--fg);
+        padding: 0;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.42);
+      }
+      dialog[open] {
+        animation: panel var(--motion-moderate-02) var(--motion-ease-productive);
+      }
+      .modal-body {
+        padding: 24px;
+      }
+      @keyframes tile {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes bar {
+        to {
+          transform: scaleY(1);
+        }
+      }
+      @keyframes panel {
+        from {
+          opacity: 0;
+          transform: translateX(24px);
+        }
+      }
+      @media (max-width: 860px) {
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+        .card.wide {
+          grid-column: auto;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 1ms !important;
+          transition-duration: 1ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>Carbon Enterprise Preview</header>
+    <main>
+      <div class="tag">Carbon Enterprise</div>
+      <h1>Precise motion for dense operational data.</h1>
+      <p class="lede">
+        The shared button, card, and dialog components are enterprise-safe:
+        accessible, restrained, and cause-and-effect driven.
+      </p>
+      <div class="actions">
+        <button data-open>Open modal</button
+        ><button class="secondary">Export data</button>
+      </div>
+      <section class="dashboard">
+        <article class="card wide">
+          <div class="tag">Chart Card</div>
+          <div class="chart">
+            <span class="bar"></span><span class="bar"></span
+            ><span class="bar"></span><span class="bar"></span>
+          </div>
+          <p>Charts reveal only when it improves comprehension.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Button</div>
+          <div class="metric">110</div>
+          <p>Color and tonal response replace decorative movement.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Dialog</div>
+          <div class="metric">240</div>
+          <p>Side panels move from the owning edge.</p>
+        </article>
+      </section>
+      <table>
+        <tr>
+          <th>System</th>
+          <th>Status</th>
+          <th>Latency</th>
+        </tr>
+        <tr>
+          <td>Billing</td>
+          <td>Nominal</td>
+          <td>42ms</td>
+        </tr>
+        <tr>
+          <td>Identity</td>
+          <td>Review</td>
+          <td>88ms</td>
+        </tr>
+      </table>
+    </main>
+    <dialog>
+      <div class="modal-body">
+        <div class="tag">Dialog</div>
+        <h2>Operational panel</h2>
+        <p class="lede">
+          Motion clarifies panel ownership and keeps dense content stable.
+        </p>
+        <button data-close>Close</button>
+      </div>
+    </dialog>
+    <script>
+      const d = document.querySelector("dialog");
+      document.querySelector("[data-open]").onclick = () => d.showModal();
+      document.querySelector("[data-close]").onclick = () => d.close();
+    </script>
+  </body>
+</html>
