@@ -6,257 +6,261 @@
     <title>Material Expressive Preview</title>
     <style>
       :root {
-        --ease: cubic-bezier(0.38, 1.21, 0.22, 1);
-        --enter: cubic-bezier(0.42, 1.67, 0.21, 0.9);
-        --exit: cubic-bezier(0.34, 0.8, 0.34, 1);
-        --fast: 150ms;
-        --default: 500ms;
-        --slow: 650ms;
+        --ease:cubic-bezier(.38,1.21,.22,1);--enter:cubic-bezier(.42,1.67,.21,.9);--exit:cubic-bezier(.34,.8,.34,1);--fast:150ms;--mid:500ms;--slow:650ms;--hero-from:translateY(32px) scale(.96);--panel-from:translateY(24px);--card-from:translateY(28px) scale(.98);--card-hover:translateY(-6px) scale(1.01);--btn-hover:translateY(-2px) scale(1.02);--press:scale(.96);--dialog-from:translateY(24px) scale(.94);--tab-shift:translateX(12px);--row-from:translateY(16px);--skeleton:1200ms;
         --bg: #fff7fb;
         --fg: #231722;
         --muted: #736272;
-        --surface: rgba(255, 255, 255, 0.82);
-        --line: rgba(35, 23, 34, 0.12);
+        --surface: rgba(255,255,255,.82);
+        --line: rgba(35,23,34,.12);
         --accent: #7c3aed;
         --accent2: #ff4fa3;
+        --accent3: #effff9;
         --font: Roboto, Inter, system-ui, sans-serif;
       }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        color: var(--fg);
-        font-family: var(--font);
-      }
-      button,
-      input {
-        font: 800 14px var(--font);
-      }
-      button {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--fg);
-        color: var(--bg);
-        padding: 12px 18px;
-        cursor: pointer;
-        box-shadow: 0 14px 36px
-          color-mix(in srgb, var(--accent) 18%, transparent);
-        transition:
-          transform var(--fast) var(--ease),
-          background var(--fast),
-          border-color var(--fast),
-          box-shadow var(--fast);
-      }
-      button:hover {
-        transform: translateY(-1px);
-        border-color: var(--accent);
-        box-shadow: 0 20px 54px
-          color-mix(in srgb, var(--accent) 24%, transparent);
-      }
-      button:active {
-        transform: scale(0.97);
-      }
-      button.secondary {
-        background: transparent;
-        color: var(--fg);
-        box-shadow: none;
-      }
-      .eyebrow {
-        color: var(--accent);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-      }
-      .lede {
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.6;
-        max-width: 680px;
-      }
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        margin-top: 24px;
-      }
-      input {
-        width: 100%;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: var(--surface);
-        color: var(--fg);
-        padding: 12px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 1ms !important;
-          animation-iteration-count: 1 !important;
-          scroll-behavior: auto !important;
-          transition-duration: 1ms !important;
-        }
-      }
-      body {
-        background:
-          radial-gradient(
-            circle at 20% 5%,
-            rgba(255, 79, 163, 0.25),
-            transparent 28rem
-          ),
-          #fff7fb;
-      }
-      .material {
-        max-width: 1160px;
-        margin: auto;
-        padding: 52px 22px;
-      }
-      .hero-card {
-        border-radius: 42px;
-        background: var(--surface);
-        padding: 28px;
-        box-shadow: 0 30px 100px rgba(124, 58, 237, 0.16);
-        transform: translateY(24px) scale(0.96);
-        opacity: 0;
-        animation: settle var(--default) var(--ease) both;
-      }
-      .morph {
-        height: 190px;
-        border-radius: 48px;
-        background: linear-gradient(
-          135deg,
-          var(--accent2),
-          var(--accent),
-          #28d6a0
-        );
-        animation: morph var(--slow) var(--ease) infinite alternate;
-      }
-      .components {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-top: 18px;
-      }
-      .surface {
-        border: 1px solid var(--line);
-        border-radius: 34px;
-        background: var(--surface);
-        padding: 20px;
-        transition:
-          transform var(--default) var(--ease),
-          border-radius var(--default) var(--enter),
-          box-shadow var(--fast) var(--exit);
-      }
-      .surface:hover {
-        transform: translateY(-6px) scale(1.01);
-        border-radius: 44px;
-        box-shadow: 0 30px 90px rgba(255, 79, 163, 0.2);
-      }
-      .switch {
-        width: 64px;
-        height: 36px;
-        border-radius: 99px;
-        background: #d8c8f4;
-        padding: 5px;
-      }
-      .knob {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: white;
-        transition: transform 350ms var(--enter);
-      }
-      .switch.on .knob {
-        transform: translateX(28px);
-      }
-      .fab {
-        position: fixed;
-        right: 22px;
-        bottom: 22px;
-        border-radius: 24px;
-        width: 66px;
-        height: 66px;
-      }
-      .fab-menu {
-        position: fixed;
-        right: 22px;
-        bottom: 98px;
-        display: grid;
-        gap: 10px;
-        opacity: 0;
-        transform: translateY(20px) scale(0.94);
-        transition: all var(--default) var(--ease);
-      }
-      .fab-menu.open {
-        opacity: 1;
-        transform: none;
-      }
-      @keyframes settle {
-        to {
-          opacity: 1;
-          transform: none;
-        }
-      }
-      @keyframes morph {
-        to {
-          border-radius: 76px 38px 68px 42px;
-          transform: translateY(-8px) scale(1.025);
-        }
-      }
-      @media (max-width: 800px) {
-        .components {
-          grid-template-columns: 1fr;
-        }
-      }
+      
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--fg);font-family:var(--font);background:radial-gradient(circle at 15% 5%,color-mix(in srgb,var(--accent) 20%,transparent),transparent 28rem),radial-gradient(circle at 88% 10%,color-mix(in srgb,var(--accent2) 16%,transparent),transparent 24rem),var(--bg)}body::before{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(color-mix(in srgb,var(--fg) 5%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--fg) 5%,transparent) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%);content:""}button,input{font:800 14px var(--font)}button{border:1px solid var(--line);border-radius:999px;background:var(--fg);color:var(--bg);padding:12px 18px;cursor:pointer;box-shadow:0 14px 36px color-mix(in srgb,var(--accent) 18%,transparent);transition:transform var(--fast) var(--ease),background var(--fast),color var(--fast),border-color var(--fast),box-shadow var(--fast),filter var(--fast)}button:hover{transform:var(--btn-hover);border-color:color-mix(in srgb,var(--accent) 48%,var(--line));box-shadow:0 20px 54px color-mix(in srgb,var(--accent) 24%,transparent)}button:active{transform:var(--press);transition-duration:80ms}.secondary{background:transparent;color:var(--fg);box-shadow:none}.primary{background:var(--fg);color:var(--bg)}button:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 34%,transparent);outline-offset:4px}h1,h2,h3,p{margin-top:0}.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.lede{max-width:680px;color:var(--muted);font-size:18px;line-height:1.6}.preview{width:min(1160px,calc(100% - 32px));margin:auto;padding:48px 0 88px}.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:24px;align-items:end;min-height:64vh;padding:38px 0}.hero-copy{opacity:0;transform:var(--hero-from);animation:hero-in var(--slow) var(--ease) both}.hero-title{margin:14px 0 18px;font-size:clamp(48px,8vw,106px);line-height:.88;letter-spacing:-.07em}.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px}.token-panel,.preview-card,.lab-panel,.drawer,dialog,.toast{border:1px solid var(--line);background:var(--surface);box-shadow:0 24px 80px color-mix(in srgb,var(--fg) 12%,transparent);backdrop-filter:blur(20px)}.token-panel{border-radius:30px;padding:20px;opacity:0;transform:var(--panel-from);animation:panel-in var(--mid) var(--ease) 120ms both}.device{position:relative;overflow:hidden;height:210px;border-radius:26px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:14px}.ambient{position:absolute;inset:18%;border-radius:28px;background:color-mix(in srgb,var(--bg) 70%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--fg) 12%,transparent)}.token-panel ul,.notes{display:grid;gap:8px;margin:0;padding:0;list-style:none}.token-panel li,.notes li{border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--surface) 76%,var(--accent3));padding:10px;color:var(--muted);font-size:13px}.section{margin-top:26px;opacity:0;transform:translateY(24px)}.section.visible{animation:section-in var(--mid) var(--ease) both}.section-head{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:16px}.section-head p{max-width:500px;margin-bottom:0;color:var(--muted);line-height:1.55}.component-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.preview-card{position:relative;overflow:hidden;min-height:245px;border-radius:26px;padding:20px;opacity:0;transform:var(--card-from);animation:card-in var(--mid) var(--ease) calc(var(--i) * 45ms) both;transition:transform var(--mid) var(--ease),box-shadow var(--mid) var(--ease),border-color var(--fast),background var(--fast),filter var(--fast)}.preview-card:hover{transform:var(--card-hover);border-color:color-mix(in srgb,var(--accent) 44%,var(--line));box-shadow:0 30px 90px color-mix(in srgb,var(--accent) 20%,transparent)}.metric{font-size:54px;font-weight:900;letter-spacing:-.07em;margin:24px 0 8px}.quote{color:var(--accent);font-size:30px;line-height:1.08}.lab-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.lab-panel{border-radius:26px;padding:20px}.tabs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border:1px solid var(--line);border-radius:20px;padding:5px;background:color-mix(in srgb,var(--surface) 70%,var(--accent3))}.indicator{position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 22px)/3);border-radius:15px;background:var(--accent);transition:transform var(--mid) var(--ease)}.tabs[data-active="1"] .indicator{transform:translateX(calc(100% + 6px))}.tabs[data-active="2"] .indicator{transform:translateX(calc(200% + 12px))}.tab{position:relative;z-index:1;background:transparent;color:var(--fg);box-shadow:none}.tab:hover{background:transparent;box-shadow:none}.tab-panel{min-height:112px;padding-top:16px;animation:tab-content var(--fast) var(--ease) both}.popover{position:relative;margin-top:14px}.menu{position:absolute;z-index:4;top:calc(100% + 10px);left:0;width:min(270px,calc(100vw - 64px));border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:0 24px 64px color-mix(in srgb,var(--fg) 18%,transparent);padding:8px;opacity:0;pointer-events:none;transform:var(--dialog-from);transform-origin:26px top;filter:blur(8px);transition:opacity var(--fast) var(--ease),transform var(--mid) var(--ease),filter var(--fast)}.menu.open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);filter:none}.menu div{border-radius:14px;padding:10px;color:var(--muted);transition:background var(--fast),color var(--fast),transform var(--fast)}.menu div:hover{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--fg)}label{display:grid;gap:7px;color:var(--muted);font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}input{width:100%;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--surface) 80%,var(--bg));color:var(--fg);padding:12px;transition:border-color var(--fast),box-shadow var(--fast),background var(--fast)}input:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 12%,transparent)}.helper{color:var(--accent);opacity:0;transform:translateY(-4px);transition:opacity var(--fast) var(--ease),transform var(--fast) var(--ease)}input:focus+.helper{opacity:1;transform:translateY(0)}.switch{width:64px;height:36px;border-radius:99px;background:color-mix(in srgb,var(--accent) 22%,var(--surface));padding:5px;box-shadow:none}.knob{display:block;width:26px;height:26px;border-radius:50%;background:var(--fg);transition:transform var(--mid) var(--ease)}.switch.on .knob{transform:translateX(28px)}.list{display:grid;gap:9px;margin-top:14px}.preview-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--surface) 76%,var(--accent3));padding:10px 12px;opacity:0;transform:var(--row-from);animation:row-in var(--mid) var(--ease) calc(var(--i) * 35ms) both;transition:opacity var(--fast),transform var(--mid) var(--ease),background var(--fast)}.preview-row:hover{background:color-mix(in srgb,var(--accent) 12%,var(--surface))}.preview-row.removing{opacity:0;transform:scale(.98)}.dot{width:28px;height:28px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2))}.skeleton{overflow:hidden;height:12px;border-radius:999px;background:color-mix(in srgb,var(--fg) 10%,transparent);margin-top:18px}.skeleton::before{display:block;width:45%;height:100%;border-radius:inherit;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--fg) 18%,transparent),transparent);content:"";animation:shimmer var(--skeleton) var(--enter) infinite}dialog{width:min(560px,calc(100% - 32px));border:0;border-radius:28px;color:var(--fg);padding:0}dialog::backdrop{background:color-mix(in srgb,var(--bg) 55%,rgba(0,0,0,.5));backdrop-filter:blur(8px)}dialog[open]{animation:dialog-in var(--mid) var(--ease) both}.modal-body{padding:26px}.drawer{position:fixed;top:0;right:0;z-index:5;width:min(420px,92vw);height:100dvh;border-block:0;border-right:0;border-radius:28px 0 0 28px;padding:26px;opacity:0;pointer-events:none;transform:translateX(100%);transition:opacity var(--fast) var(--ease),transform var(--slow) var(--ease)}.drawer.open{opacity:1;pointer-events:auto;transform:translateX(0)}.toast{position:fixed;right:22px;bottom:22px;z-index:6;width:min(360px,calc(100vw - 44px));border-radius:20px;background:var(--fg);color:var(--bg);padding:14px 16px;opacity:0;pointer-events:none;transform:translateY(16px) scale(.98);transition:opacity var(--fast) var(--ease),transform var(--mid) var(--ease)}.toast.open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}@keyframes hero-in{to{opacity:1;transform:none}}@keyframes panel-in{to{opacity:1;transform:none}}@keyframes section-in{to{opacity:1;transform:none}}@keyframes card-in{to{opacity:1;transform:none}}@keyframes row-in{to{opacity:1;transform:none}}@keyframes tab-content{from{opacity:0;transform:var(--tab-shift)}}@keyframes dialog-in{from{opacity:0;transform:var(--dialog-from)}}@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(240%)}}@media(max-width:900px){.preview{width:min(100% - 24px,720px);padding-top:28px}.hero,.component-grid,.lab-grid{grid-template-columns:1fr}.section-head{display:block}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:1ms!important}.hero-copy,.token-panel,.section,.preview-card,.preview-row{opacity:1!important;transform:none!important}body::after{display:none!important}}
+
+      .ambient{animation:morph var(--slow) var(--ease) infinite alternate}.switch .knob{transition:transform 350ms var(--enter)}@keyframes morph{to{border-radius:76px 38px 68px 42px;transform:translateY(-8px) scale(1.025)}}
     </style>
   </head>
-  <body>
-    <main class="material">
-      <section class="hero-card">
-        <p class="eyebrow">Material Expressive</p>
-        <h1>Spatial tokens move objects.</h1>
-        <p class="lede">
-          Effects tokens handle color, shadow, opacity, and focus without
-          overshooting.
-        </p>
-        <div class="morph"></div>
+  <body class="material">
+    <main class="preview">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Material Expressive</div>
+          <h1 class="hero-title"><span>Same UI, different motion.</span></h1>
+          <p class="lede">
+            This preview keeps the same elements across every style so the
+            animation language can be compared directly.
+          </p>
+          <div class="actions">
+            <button class="primary" data-open-dialog>Open dialog</button>
+            <button class="secondary" data-open-drawer>Open drawer</button>
+            <button class="secondary" data-toast>Show toast</button>
+          </div>
+        </div>
+        <aside class="token-panel" aria-label="Motion tokens">
+          <div class="device"><div class="ambient"></div></div>
+          <ul>
+            <li><code>--motion-spatial-fast: cubic-bezier(0.42, 1.67, 0.21, 0.9)</code></li>
+<li><code>--motion-spatial-default: cubic-bezier(0.38, 1.21, 0.22, 1)</code></li>
+<li><code>--motion-effects-fast: cubic-bezier(0.31, 0.94, 0.34, 1)</code></li>
+<li><code>--motion-duration-spatial-default: 500ms</code></li>
+          </ul>
+        </aside>
       </section>
-      <section class="components">
-        <article class="surface">
-          <h2>Card</h2>
-          <p>Default spatial spring, hover lift -6px.</p>
-        </article>
-        <article class="surface">
-          <h2>Switch</h2>
-          <button class="switch on" data-switch>
-            <span class="knob"></span>
-          </button>
-        </article>
-        <article class="surface">
-          <h2>Dialog</h2>
-          <p>Opacity, scale .94 to 1, y 24px.</p>
-        </article>
+
+      <section class="section visible">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Components</div>
+            <h2>Button, card, dialog, menu, tabs, form, list, loader.</h2>
+          </div>
+          <p>
+            Same DOM and controls in every preview. Only the design tokens,
+            keyframes, transforms, timing, and interaction behavior change.
+          </p>
+        </div>
+        <div class="component-grid">
+          <article class="preview-card" style="--i: 0">
+            <div class="eyebrow">Button</div>
+            <div class="metric">Press</div>
+            <p>Hover and active feedback follow this style's component rule.</p>
+            <button class="primary" data-reward>Try feedback</button>
+          </article>
+          <article class="preview-card drag-card" style="--i: 1">
+            <div class="eyebrow">Card</div>
+            <div class="metric">Card</div>
+            <p>Entrance and hover use the style-specific surface motion.</p>
+            <div class="skeleton"></div>
+          </article>
+          <article class="preview-card" style="--i: 2">
+            <div class="eyebrow">Motion Notes</div>
+            <ul class="notes">
+              <li style="--i:0">Page: content y 24px with spatial token</li>
+<li style="--i:1">Cards: y 28px scale .98, stagger 40ms</li>
+<li style="--i:2">Button: lift -2px scale 1.02</li>
+<li style="--i:3">Switch: handle uses fast spatial spring</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Interactive Lab</div>
+            <h2>Same controls, different animation signatures.</h2>
+          </div>
+          <p>
+            Toggle menu, tabs, fields, list insertion, drawer, dialog, and toast
+            to compare motion.md behavior across styles.
+          </p>
+        </div>
+        <div class="lab-grid">
+          <article class="lab-panel">
+            <h3>Tabs and menu</h3>
+            <div class="tabs" data-active="0">
+              <span class="indicator" aria-hidden="true"></span>
+              <button class="tab" data-tab="0">Page</button>
+              <button class="tab" data-tab="1">Component</button>
+              <button class="tab" data-tab="2">Reduced</button>
+            </div>
+            <div class="tab-panel" data-tab-panel>
+              <h3>Page animation</h3>
+              <p>Page: content y 24px with spatial token</p>
+            </div>
+            <div class="popover">
+              <button class="secondary" data-menu-toggle>Toggle menu</button>
+              <div class="menu" data-menu>
+                <div>Trigger-origin reveal</div>
+                <div>Item hover state</div>
+                <div>Exit and reduced motion</div>
+              </div>
+            </div>
+          </article>
+          <article class="lab-panel">
+            <h3>Form, switch, list, loading</h3>
+            <label>
+              Motion field
+              <input value="Material Expressive" />
+              <span class="helper">Focus feedback uses component motion.</span>
+            </label>
+            <div class="actions">
+              <button class="switch on" data-switch aria-label="Toggle switch">
+                <span class="knob"></span>
+              </button>
+              <button class="secondary" data-add-row>Add row</button>
+            </div>
+            <div class="list" data-list>
+              <div class="preview-row" style="--i: 0"><span class="dot"></span><strong>Dialog</strong><span>enter</span></div>
+              <div class="preview-row" style="--i: 1"><span class="dot"></span><strong>Toast</strong><span>edge</span></div>
+              <div class="preview-row" style="--i: 2"><span class="dot"></span><strong>Loading</strong><span>stable</span></div>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
-    <div class="fab-menu">
-      <button>Menu</button><button>Toast</button><button>Sheet</button>
+
+    <dialog>
+      <div class="modal-body">
+        <div class="eyebrow">Dialog</div>
+        <h2>Material Expressive dialog motion.</h2>
+        <p class="lede">Button: lift -2px scale 1.02</p>
+        <div class="actions">
+          <button data-close-dialog>Close</button>
+          <button class="secondary" data-toast>Show toast</button>
+        </div>
+      </div>
+    </dialog>
+
+    <aside class="drawer" data-drawer>
+      <div class="eyebrow">Drawer</div>
+      <h2>Owning-edge panel.</h2>
+      <p class="lede">Switch: handle uses fast spatial spring</p>
+      <div class="list">
+        <div class="preview-row" style="--i: 0"><span class="dot"></span><strong>Page</strong><span>global</span></div>
+        <div class="preview-row" style="--i: 1"><span class="dot"></span><strong>Component</strong><span>local</span></div>
+        <div class="preview-row" style="--i: 2"><span class="dot"></span><strong>Reduced</strong><span>safe</span></div>
+      </div>
+      <div class="actions"><button data-close-drawer>Close drawer</button></div>
+    </aside>
+
+    <div class="toast" data-toast-node>
+      <strong>Material Expressive</strong><br />
+      <span>Toast uses the same element with style-specific motion.</span>
     </div>
-    <button class="fab" data-fab>+</button>
+
     <script>
-      document.querySelector("[data-switch]").onclick = (e) =>
-        e.currentTarget.classList.toggle("on");
-      document.querySelector("[data-fab]").onclick = () =>
-        document.querySelector(".fab-menu").classList.toggle("open");
+      const dialog = document.querySelector("dialog");
+      const drawer = document.querySelector("[data-drawer]");
+      const menu = document.querySelector("[data-menu]");
+      const tabs = document.querySelector(".tabs");
+      const tabPanel = document.querySelector("[data-tab-panel]");
+      const toast = document.querySelector("[data-toast-node]");
+      const list = document.querySelector("[data-list]");
+      const dragCard = document.querySelector(".drag-card");
+      const tabCopy = [
+        ["Page animation", "Page: content y 24px with spatial token"],
+        ["Component animation", "Cards: y 28px scale .98, stagger 40ms"],
+        ["Accessibility", "Reduced motion keeps the same elements but removes unsafe movement."],
+      ];
+
+      document.querySelectorAll("[data-open-dialog]").forEach((button) => {
+        button.addEventListener("click", () => dialog.showModal());
+      });
+      document.querySelector("[data-close-dialog]").addEventListener("click", () => dialog.close());
+      document.querySelector("[data-open-drawer]").addEventListener("click", () => drawer.classList.add("open"));
+      document.querySelector("[data-close-drawer]").addEventListener("click", () => drawer.classList.remove("open"));
+      document.querySelector("[data-menu-toggle]").addEventListener("click", () => menu.classList.toggle("open"));
+      document.querySelector("[data-switch]").addEventListener("click", (event) => event.currentTarget.classList.toggle("on"));
+      document.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const active = Number(button.dataset.tab);
+          tabs.dataset.active = String(active);
+          tabPanel.innerHTML = "<h3>" + tabCopy[active][0] + "</h3><p>" + tabCopy[active][1] + "</p>";
+        });
+      });
+      document.querySelector("[data-add-row]").addEventListener("click", () => {
+        const row = document.createElement("div");
+        row.className = "preview-row";
+        row.style.setProperty("--i", "0");
+        row.innerHTML = '<span class="dot"></span><strong>New row</strong><span>fresh</span>';
+        list.prepend(row);
+        if (list.children.length > 4) {
+          const last = list.lastElementChild;
+          last.classList.add("removing");
+          setTimeout(() => last.remove(), 240);
+        }
+      });
+      function showToast() {
+        toast.classList.add("open");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("open"), 2200);
+      }
+      document.querySelectorAll("[data-toast]").forEach((button) => button.addEventListener("click", showToast));
+      document.querySelector("[data-reward]").addEventListener("click", (event) => {
+        if (!document.body.classList.contains("game")) return;
+        for (let i = 0; i < 18; i++) {
+          const p = document.createElement("i");
+          p.className = "reward-burst";
+          p.style.left = event.clientX + "px";
+          p.style.top = event.clientY + "px";
+          p.style.setProperty("--x", Math.random() * 220 - 110 + "px");
+          p.style.setProperty("--y", Math.random() * -160 - 20 + "px");
+          document.body.append(p);
+          setTimeout(() => p.remove(), 720);
+        }
+      });
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      dragCard.addEventListener("pointerdown", (event) => {
+        if (!document.body.classList.contains("framer")) return;
+        dragging = true;
+        startX = event.clientX;
+        startY = event.clientY;
+        dragCard.classList.add("dragging");
+        dragCard.setPointerCapture(event.pointerId);
+      });
+      dragCard.addEventListener("pointermove", (event) => {
+        if (!dragging) return;
+        dragCard.style.transform = "translate(" + (event.clientX - startX) + "px," + (event.clientY - startY) + "px) scale(1.03)";
+      });
+      dragCard.addEventListener("pointerup", () => {
+        dragging = false;
+        dragCard.classList.remove("dragging");
+        dragCard.style.transform = "";
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -80px", threshold: 0.2 });
+      document.querySelectorAll(".section:not(.visible)").forEach((section) => observer.observe(section));
     </script>
   </body>
 </html>
