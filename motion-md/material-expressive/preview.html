@@ -11,213 +11,806 @@
         --motion-spatial-slow: cubic-bezier(0.39, 1.29, 0.35, 0.98);
         --motion-effects-fast: cubic-bezier(0.31, 0.94, 0.34, 1);
         --motion-effects-default: cubic-bezier(0.34, 0.8, 0.34, 1);
+        --motion-effects-slow: cubic-bezier(0.34, 0.88, 0.34, 1);
         --motion-duration-spatial-fast: 350ms;
         --motion-duration-spatial-default: 500ms;
         --motion-duration-spatial-slow: 650ms;
         --motion-duration-effects-fast: 150ms;
         --motion-duration-effects-default: 200ms;
+        --motion-duration-effects-slow: 300ms;
+
         --bg: #fff7fb;
         --fg: #231722;
-        --muted: #705f6d;
+        --muted: #736272;
+        --surface: rgba(255, 255, 255, 0.82);
+        --surface-strong: #ffffff;
+        --line: rgba(35, 23, 34, 0.12);
         --pink: #ff4fa3;
         --purple: #7c3aed;
         --mint: #28d6a0;
+        --amber: #ffbd45;
+        --shadow: 0 24px 80px rgba(124, 58, 237, 0.14);
       }
+
       * {
         box-sizing: border-box;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
         min-height: 100vh;
         color: var(--fg);
-        font-family: Roboto, Inter, system-ui, sans-serif;
+        font-family: Roboto, Inter, ui-sans-serif, system-ui, sans-serif;
         background:
-          radial-gradient(
-            circle at 20% 5%,
-            rgba(255, 79, 163, 0.28),
-            transparent 27rem
-          ),
-          radial-gradient(
-            circle at 88% 12%,
-            rgba(40, 214, 160, 0.24),
-            transparent 26rem
-          ),
-          #fff7fb;
+          radial-gradient(circle at 18% 4%, rgba(255, 79, 163, 0.3), transparent 28rem),
+          radial-gradient(circle at 88% 8%, rgba(40, 214, 160, 0.24), transparent 28rem),
+          linear-gradient(135deg, #fff7fb 0%, #f8f3ff 54%, #effff9 100%);
       }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(35, 23, 34, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(35, 23, 34, 0.04) 1px, transparent 1px);
+        background-size: 42px 42px;
+        content: "";
+        mask-image: linear-gradient(to bottom, black 0%, transparent 82%);
+      }
+
       main {
-        width: min(1140px, calc(100% - 32px));
+        width: min(1160px, calc(100% - 32px));
         margin: auto;
-        padding: 56px 0;
+        padding: 56px 0 88px;
       }
+
       .hero {
-        padding: 74px 0 38px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+        gap: 28px;
+        align-items: end;
+        padding: 60px 0 42px;
         opacity: 0;
         transform: translateY(24px);
-        animation: main-in var(--motion-duration-spatial-default)
-          var(--motion-spatial-default) forwards;
+        animation: main-in var(--motion-duration-spatial-default) var(--motion-spatial-default) forwards;
       }
-      .tag {
+
+      .eyebrow,
+      .kicker {
         color: var(--purple);
         font-size: 12px;
+        font-weight: 900;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-        font-weight: 800;
       }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
       h1 {
-        max-width: 860px;
-        margin: 14px 0;
-        font-size: clamp(48px, 9vw, 112px);
-        line-height: 0.9;
-        letter-spacing: -0.07em;
+        max-width: 820px;
+        margin-bottom: 18px;
+        font-size: clamp(52px, 9vw, 116px);
+        line-height: 0.88;
+        letter-spacing: -0.075em;
       }
+
+      h2 {
+        margin-bottom: 10px;
+        font-size: clamp(30px, 4vw, 54px);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 21px;
+        letter-spacing: -0.025em;
+      }
+
       .lede {
-        max-width: 650px;
+        max-width: 680px;
         color: var(--muted);
         font-size: 18px;
         line-height: 1.65;
       }
-      .actions {
+
+      .actions,
+      .row {
         display: flex;
-        gap: 12px;
         flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .row-title {
+        margin-right: auto;
+      }
+
+      .actions {
         margin-top: 28px;
       }
-      button {
+
+      button,
+      .button {
         border: 0;
         border-radius: 999px;
         background: var(--fg);
         color: white;
-        padding: 14px 21px;
-        font:
-          800 15px Roboto,
-          sans-serif;
+        padding: 13px 20px;
+        font: 850 15px Roboto, Inter, sans-serif;
         cursor: pointer;
         box-shadow: 0 14px 34px rgba(35, 23, 34, 0.18);
         transition:
-          transform var(--motion-duration-spatial-fast)
-            var(--motion-spatial-fast),
-          box-shadow var(--motion-duration-effects-fast)
-            var(--motion-effects-fast),
-          background var(--motion-duration-effects-fast)
-            var(--motion-effects-fast);
+          transform var(--motion-duration-spatial-fast) var(--motion-spatial-fast),
+          box-shadow var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          background var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          color var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          outline-color var(--motion-duration-effects-fast) var(--motion-effects-fast);
       }
-      button:hover {
+
+      button:hover,
+      .button:hover {
+        background: var(--purple);
         transform: translateY(-2px) scale(1.02);
         box-shadow: 0 22px 48px rgba(124, 58, 237, 0.24);
-        background: var(--purple);
       }
-      button:active {
+
+      button:active,
+      .button:active {
         transform: scale(0.96);
+        transition-duration: 80ms;
       }
-      .chip {
+
+      button:focus-visible,
+      .button:focus-visible,
+      input:focus-visible {
+        outline: 3px solid rgba(124, 58, 237, 0.32);
+        outline-offset: 4px;
+      }
+
+      .secondary {
+        border: 1px solid var(--line);
         background: white;
         color: var(--fg);
+        box-shadow: none;
       }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 18px;
-        margin-top: 50px;
-      }
-      .card {
-        min-height: 310px;
-        border-radius: 36px;
-        background: white;
-        padding: 24px;
-        box-shadow: 0 24px 80px rgba(124, 58, 237, 0.12);
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        padding: 8px 11px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+        backdrop-filter: blur(16px);
         opacity: 0;
-        transform: translateY(28px) scale(0.98);
-        animation: card var(--motion-duration-spatial-default)
-          var(--motion-spatial-default) forwards;
-        transition:
-          transform var(--motion-duration-spatial-default)
-            var(--motion-spatial-default),
-          box-shadow var(--motion-duration-effects-default)
-            var(--motion-effects-default),
-          border-radius var(--motion-duration-spatial-fast)
-            var(--motion-spatial-fast);
+        transform: scale(0.92);
+        animation: chip-in var(--motion-duration-spatial-fast) var(--motion-spatial-fast) forwards;
       }
-      .card:nth-child(2) {
+
+      .chip:nth-child(2) {
         animation-delay: 40ms;
       }
-      .card:nth-child(3) {
+
+      .chip:nth-child(3) {
         animation-delay: 80ms;
       }
-      .card:hover {
-        transform: translateY(-6px) scale(1.01);
+
+      .hero-panel,
+      .card,
+      .demo-panel,
+      .drawer,
+      dialog {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(22px);
+      }
+
+      .hero-panel {
+        border-radius: 36px;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        animation: card-in var(--motion-duration-spatial-default) var(--motion-spatial-default) 80ms forwards;
+      }
+
+      .hero-blob {
+        height: 170px;
         border-radius: 44px;
+        background:
+          radial-gradient(circle at 20% 24%, white 0 12%, transparent 13%),
+          linear-gradient(135deg, var(--pink), var(--purple), var(--mint));
+        animation: morph var(--motion-duration-spatial-slow) var(--motion-spatial-slow) infinite alternate;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .stat {
+        border-radius: 22px;
+        background: white;
+        padding: 14px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 27px;
+        letter-spacing: -0.06em;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .section {
+        margin-top: 28px;
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      .section.is-visible {
+        animation: reveal var(--motion-duration-spatial-default) var(--motion-spatial-default) forwards;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      .section-head p {
+        max-width: 490px;
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .component-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 250px;
+        border-radius: 34px;
+        padding: 22px;
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        animation: card-in var(--motion-duration-spatial-default) var(--motion-spatial-default) forwards;
+        transition:
+          transform var(--motion-duration-spatial-default) var(--motion-spatial-default),
+          border-radius var(--motion-duration-spatial-fast) var(--motion-spatial-fast),
+          box-shadow var(--motion-duration-effects-default) var(--motion-effects-default),
+          border-color var(--motion-duration-effects-default) var(--motion-effects-default);
+      }
+
+      .card:nth-child(2),
+      .demo-panel:nth-child(2) {
+        animation-delay: 40ms;
+      }
+
+      .card:nth-child(3),
+      .demo-panel:nth-child(3) {
+        animation-delay: 80ms;
+      }
+
+      .card:hover {
+        border-color: rgba(124, 58, 237, 0.22);
+        border-radius: 44px;
+        transform: translateY(-6px) scale(1.01);
         box-shadow: 0 32px 100px rgba(255, 79, 163, 0.2);
       }
-      .metric {
-        font-size: 56px;
-        letter-spacing: -0.06em;
-        margin-top: 78px;
-      }
-      .blob {
-        height: 150px;
-        border-radius: 44px;
-        background: linear-gradient(
-          135deg,
-          var(--pink),
-          var(--purple),
-          var(--mint)
-        );
-        animation: morph var(--motion-duration-spatial-slow)
-          var(--motion-spatial-slow) infinite alternate;
-      }
-      .card p {
+
+      .card p,
+      .demo-panel p,
+      .menu p {
         color: var(--muted);
-        line-height: 1.6;
+        line-height: 1.55;
       }
+
+      .metric {
+        margin: 30px 0 8px;
+        font-size: 62px;
+        font-weight: 900;
+        letter-spacing: -0.075em;
+      }
+
+      .meter {
+        overflow: hidden;
+        height: 12px;
+        border-radius: 999px;
+        background: rgba(35, 23, 34, 0.08);
+      }
+
+      .meter span {
+        display: block;
+        width: 78%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--pink), var(--purple));
+        transform-origin: left;
+        animation: meter var(--motion-duration-spatial-default) var(--motion-spatial-default) 220ms both;
+      }
+
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 18px;
+      }
+
+      .demo-panel {
+        border-radius: 34px;
+        padding: 22px;
+        opacity: 0;
+        transform: translateY(28px) scale(0.98);
+        animation: card-in var(--motion-duration-spatial-default) var(--motion-spatial-default) forwards;
+      }
+
+      .tab-shell {
+        border-radius: 28px;
+        background: white;
+        padding: 10px;
+      }
+
+      .tabs {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        border-radius: 22px;
+        background: rgba(35, 23, 34, 0.06);
+        padding: 6px;
+      }
+
+      .tab-indicator {
+        position: absolute;
+        top: 6px;
+        bottom: 6px;
+        left: 6px;
+        width: calc((100% - 24px) / 3);
+        border-radius: 17px;
+        background: white;
+        box-shadow: 0 10px 28px rgba(35, 23, 34, 0.1);
+        transition: transform var(--motion-duration-spatial-default) var(--motion-spatial-default);
+      }
+
+      .tabs[data-active="1"] .tab-indicator {
+        transform: translateX(calc(100% + 6px));
+      }
+
+      .tabs[data-active="2"] .tab-indicator {
+        transform: translateX(calc(200% + 12px));
+      }
+
+      .tab {
+        position: relative;
+        z-index: 1;
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        box-shadow: none;
+      }
+
+      .tab:hover {
+        background: transparent;
+        color: var(--fg);
+        box-shadow: none;
+      }
+
+      .tab-panel {
+        min-height: 126px;
+        padding: 18px 6px 6px;
+        animation: tab-content var(--motion-duration-effects-default) var(--motion-effects-default);
+      }
+
+      .popover-wrap {
+        position: relative;
+      }
+
+      .menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        z-index: 3;
+        width: min(260px, calc(100vw - 64px));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: white;
+        padding: 8px;
+        box-shadow: 0 26px 72px rgba(35, 23, 34, 0.18);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px) scale(0.96);
+        transform-origin: 26px top;
+        transition:
+          opacity var(--motion-duration-effects-default) var(--motion-effects-default),
+          transform var(--motion-duration-spatial-fast) var(--motion-spatial-fast);
+      }
+
+      .menu.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-radius: 16px;
+        padding: 12px;
+        color: var(--fg);
+        font-size: 14px;
+        font-weight: 800;
+        transition:
+          background var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          color var(--motion-duration-effects-fast) var(--motion-effects-fast);
+      }
+
+      .menu-item:hover {
+        background: rgba(124, 58, 237, 0.1);
+        color: var(--purple);
+      }
+
+      .form-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: white;
+        padding: 14px 15px;
+        color: var(--fg);
+        font: 700 15px Inter, sans-serif;
+        transition:
+          border-color var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          box-shadow var(--motion-duration-effects-fast) var(--motion-effects-fast),
+          background var(--motion-duration-effects-fast) var(--motion-effects-fast);
+      }
+
+      input:focus {
+        border-color: rgba(124, 58, 237, 0.46);
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+      }
+
+      .helper {
+        color: var(--purple);
+        font-size: 13px;
+        font-weight: 800;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition:
+          opacity var(--motion-duration-effects-default) var(--motion-effects-default),
+          transform var(--motion-duration-spatial-fast) var(--motion-spatial-fast);
+      }
+
+      input:focus + .helper {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .switch {
+        position: relative;
+        width: 64px;
+        height: 36px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(35, 23, 34, 0.12);
+        padding: 0;
+        box-shadow: none;
+        transition: background var(--motion-duration-effects-fast) var(--motion-effects-fast);
+      }
+
+      .switch::before {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: white;
+        box-shadow: 0 7px 18px rgba(35, 23, 34, 0.16);
+        content: "";
+        transition: transform var(--motion-duration-spatial-fast) var(--motion-spatial-fast);
+      }
+
+      .switch[aria-checked="true"] {
+        background: var(--purple);
+      }
+
+      .switch[aria-checked="true"]::before {
+        transform: translateX(28px);
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .list-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        border-radius: 20px;
+        background: white;
+        padding: 13px 14px;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: row-in var(--motion-duration-spatial-default) var(--motion-spatial-default) forwards;
+        transition:
+          transform var(--motion-duration-spatial-default) var(--motion-spatial-default),
+          opacity var(--motion-duration-effects-default) var(--motion-effects-default),
+          background var(--motion-duration-effects-fast) var(--motion-effects-fast);
+      }
+
+      .list-row:nth-child(2) {
+        animation-delay: 40ms;
+      }
+
+      .list-row:nth-child(3) {
+        animation-delay: 80ms;
+      }
+
+      .list-row:hover {
+        background: rgba(124, 58, 237, 0.08);
+      }
+
+      .list-row.is-removing {
+        opacity: 0;
+        transform: scale(0.985);
+      }
+
+      .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 13px;
+        background: linear-gradient(135deg, var(--pink), var(--purple));
+      }
+
+      .skeleton-card {
+        display: grid;
+        gap: 12px;
+        border-radius: 26px;
+        background: white;
+        padding: 16px;
+      }
+
+      .skeleton {
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(35, 23, 34, 0.08);
+      }
+
+      .skeleton::before {
+        display: block;
+        width: 45%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.86), transparent);
+        content: "";
+        animation: pulse 1200ms var(--motion-effects-slow) infinite;
+      }
+
+      .sk-title {
+        width: 72%;
+        height: 15px;
+      }
+
+      .sk-line {
+        width: 100%;
+        height: 10px;
+      }
+
+      .sk-line.short {
+        width: 58%;
+      }
+
       dialog {
         width: min(560px, calc(100% - 32px));
         border: 0;
         border-radius: 36px;
-        background: white;
         color: var(--fg);
         padding: 0;
-        box-shadow: 0 30px 120px rgba(35, 23, 34, 0.25);
       }
+
       dialog::backdrop {
         background: rgba(35, 23, 34, 0.32);
         backdrop-filter: blur(8px);
       }
+
       dialog[open] {
-        animation: dialog-in var(--motion-duration-spatial-default)
-          var(--motion-spatial-default);
+        animation: dialog-in var(--motion-duration-spatial-default) var(--motion-spatial-default);
       }
+
       .modal-body {
         padding: 28px;
       }
+
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 5;
+        width: min(420px, 92vw);
+        height: 100dvh;
+        border-block: 0;
+        border-right: 0;
+        border-radius: 34px 0 0 34px;
+        padding: 28px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition:
+          transform var(--motion-duration-spatial-slow) var(--motion-spatial-slow),
+          opacity var(--motion-duration-effects-default) var(--motion-effects-default);
+      }
+
+      .drawer.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
+
+      .drawer .list-row {
+        animation-delay: 40ms;
+      }
+
+      .toast {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 6;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: min(360px, calc(100vw - 44px));
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--fg);
+        color: white;
+        padding: 14px 16px;
+        box-shadow: 0 26px 72px rgba(35, 23, 34, 0.26);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(24px) scale(0.98);
+        transition:
+          opacity var(--motion-duration-effects-default) var(--motion-effects-default),
+          transform var(--motion-duration-spatial-fast) var(--motion-spatial-fast);
+      }
+
+      .toast.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+
       @keyframes main-in {
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-      @keyframes card {
+
+      @keyframes chip-in {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes card-in {
         to {
           opacity: 1;
           transform: translateY(0) scale(1);
         }
       }
+
+      @keyframes reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes row-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes meter {
+        from {
+          transform: scaleX(0);
+        }
+      }
+
       @keyframes morph {
         to {
-          border-radius: 72px 36px 64px 42px;
+          border-radius: 76px 38px 68px 42px;
           transform: translateY(-8px) scale(1.025);
         }
       }
+
+      @keyframes tab-content {
+        from {
+          opacity: 0;
+          transform: translateX(12px);
+        }
+      }
+
       @keyframes dialog-in {
         from {
           opacity: 0;
-          transform: translateY(32px) scale(0.96);
+          transform: translateY(24px) scale(0.94);
         }
       }
-      @media (max-width: 800px) {
-        .grid {
+
+      @keyframes pulse {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(240%);
+        }
+      }
+
+      @media (max-width: 900px) {
+        main {
+          width: min(100% - 24px, 720px);
+          padding-top: 32px;
+        }
+
+        .hero,
+        .demo-grid,
+        .component-grid {
           grid-template-columns: 1fr;
         }
+
+        .section-head {
+          display: block;
+        }
       }
+
       @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
@@ -227,58 +820,299 @@
           scroll-behavior: auto !important;
           transition-duration: 1ms !important;
         }
+
+        .section,
+        .hero,
+        .card,
+        .demo-panel,
+        .hero-panel,
+        .chip,
+        .list-row {
+          opacity: 1 !important;
+          transform: none !important;
+        }
       }
     </style>
   </head>
   <body>
     <main>
       <section class="hero">
-        <div class="tag">Material Expressive</div>
-        <h1>Spring-like surfaces with expressive clarity.</h1>
-        <p class="lede">
-          Buttons, cards, and dialogs use spatial tokens for transform and
-          effects tokens for color, shadow, and opacity.
-        </p>
-        <div class="actions">
-          <button data-open>Open modal</button
-          ><button class="chip">Toggle chip</button>
+        <div>
+          <div class="eyebrow">Material Expressive</div>
+          <h1>Component motion with spring-like clarity.</h1>
+          <p class="lede">
+            Spatial tokens drive movement, scale, shape, and layout transitions.
+            Effects tokens keep opacity, color, shadow, and focus changes clean.
+          </p>
+          <div class="actions">
+            <button data-open-dialog>Open dialog</button>
+            <button class="secondary" data-open-drawer>Open sheet</button>
+            <span class="chip">Spatial spring</span>
+            <span class="chip">Effects fade</span>
+            <span class="chip">Reduced motion</span>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Motion token summary">
+          <div class="hero-blob"></div>
+          <div class="hero-stats">
+            <div class="stat"><strong>350</strong><span>fast spatial</span></div>
+            <div class="stat"><strong>500</strong><span>default</span></div>
+            <div class="stat"><strong>150</strong><span>effects</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section is-visible">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Core components</div>
+            <h2>Buttons, cards, and dialogs get distinct motion roles.</h2>
+          </div>
+          <p>
+            Small controls respond quickly, cards settle as surfaces, and large
+            overlays use slower spatial motion with faster exits.
+          </p>
+        </div>
+        <div class="component-grid">
+          <article class="card">
+            <div class="kicker">Button</div>
+            <div class="metric">0.96</div>
+            <p>Hover lifts and scales; press compresses for 50ms to 100ms.</p>
+            <button>Press feedback</button>
+          </article>
+          <article class="card">
+            <div class="kicker">Card</div>
+            <div class="metric">-6px</div>
+            <p>Cards enter with a default spatial spring and lift as a surface.</p>
+            <div class="meter" aria-hidden="true"><span></span></div>
+          </article>
+          <article class="card">
+            <div class="kicker">Dialog</div>
+            <div class="metric">500</div>
+            <p>Dialogs combine opacity, scale, and y movement with focus kept clear.</p>
+            <button class="secondary" data-open-dialog>Preview dialog</button>
+          </article>
         </div>
       </section>
-      <section class="grid">
-        <article class="card">
-          <div class="tag">Surface</div>
-          <div class="blob"></div>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Stateful surfaces</div>
+            <h2>Menus, tabs, fields, and toggles use component-specific rules.</h2>
+          </div>
           <p>
-            Shape and position use spatial motion, while color remains
-            non-overshooting.
+            The indicator moves spatially, menu items highlight with effects only,
+            and form feedback avoids layout instability.
           </p>
-        </article>
-        <article class="card">
-          <div class="tag">Button</div>
-          <div class="metric">350</div>
-          <p>Small controls use fast spatial spring-like motion.</p>
-        </article>
-        <article class="card">
-          <div class="tag">Dialog</div>
-          <div class="metric">500</div>
-          <p>Dialogs enter as larger spatial surfaces with clear focus.</p>
-        </article>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-panel">
+            <h3>Tabs use a spatial indicator</h3>
+            <div class="tab-shell">
+              <div class="tabs" data-active="0">
+                <span class="tab-indicator" aria-hidden="true"></span>
+                <button class="tab" data-tab="0">Motion</button>
+                <button class="tab" data-tab="1">Focus</button>
+                <button class="tab" data-tab="2">Exit</button>
+              </div>
+              <div class="tab-panel" data-tab-panel>
+                <h3>Default spatial spring</h3>
+                <p>Content fades with a small x movement under 16px.</p>
+              </div>
+            </div>
+          </article>
+          <article class="demo-panel">
+            <h3>Menu grows from trigger</h3>
+            <div class="popover-wrap">
+              <button class="secondary" data-menu-toggle>Open menu</button>
+              <div class="menu" data-menu>
+                <div class="menu-item">Fast spatial scale <span>350ms</span></div>
+                <div class="menu-item">Effects highlight <span>150ms</span></div>
+                <div class="menu-item">Trigger origin <span>top</span></div>
+              </div>
+            </div>
+            <p>Menu items avoid movement; background and color carry hover state.</p>
+          </article>
+          <article class="demo-panel">
+            <h3>Form field effects</h3>
+            <div class="form-stack">
+              <label>
+                Project name
+                <input value="Expressive Preview" />
+                <span class="helper">Focus ring and helper text use effects tokens.</span>
+              </label>
+              <div class="row">
+                <button class="switch" type="button" role="switch" aria-checked="true" data-switch aria-label="Enable expressive motion"></button>
+                <p>Switch handle uses fast spatial motion.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Lists and loading</div>
+            <h2>Repeated content moves as a group and skeletons keep layout stable.</h2>
+          </div>
+          <p>
+            New list items enter with y movement, removed rows fade before collapse,
+            and loading motion stays subtle instead of aggressive shimmer.
+          </p>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-panel">
+            <div class="row">
+              <h3 class="row-title">List row motion</h3>
+              <button class="secondary" data-add-row>Add row</button>
+            </div>
+            <div class="list" data-list>
+              <div class="list-row">
+                <span class="avatar"></span><strong>Shared element handoff</strong><span>500ms</span>
+              </div>
+              <div class="list-row">
+                <span class="avatar"></span><strong>Grouped reveal</strong><span>40ms</span>
+              </div>
+              <div class="list-row">
+                <span class="avatar"></span><strong>Effects-only hover</strong><span>150ms</span>
+              </div>
+            </div>
+          </article>
+          <article class="demo-panel">
+            <h3>Skeleton loading</h3>
+            <div class="skeleton-card">
+              <div class="skeleton sk-title"></div>
+              <div class="skeleton sk-line"></div>
+              <div class="skeleton sk-line"></div>
+              <div class="skeleton sk-line short"></div>
+            </div>
+            <p>Pulse runs from top-left toward bottom-right over 1200ms.</p>
+          </article>
+        </div>
       </section>
     </main>
+
     <dialog>
       <div class="modal-body">
-        <div class="tag">Dialog</div>
-        <h2>Expressive sheet</h2>
+        <div class="kicker">Dialog</div>
+        <h2>Large surfaces use default spatial motion.</h2>
         <p class="lede">
-          Reduced motion support is built in, and focus is preserved.
+          Enter combines y movement, scale, and opacity. Exit should be faster and
+          less attention-seeking.
         </p>
-        <button data-close>Close</button>
+        <div class="row">
+          <button data-close-dialog>Close</button>
+          <button class="secondary" data-toast>Show toast</button>
+        </div>
       </div>
     </dialog>
+
+    <aside class="drawer" data-drawer aria-label="Component sheet">
+      <div class="kicker">Sheet / Drawer</div>
+      <h2>Own the edge you enter from.</h2>
+      <p class="lede">
+        This sheet slides from the right with slow spatial motion, while inner
+        rows enter with a small stagger.
+      </p>
+      <div class="list">
+        <div class="list-row"><span class="avatar"></span><strong>Owning edge</strong><span>right</span></div>
+        <div class="list-row"><span class="avatar"></span><strong>Inner stagger</strong><span>40ms</span></div>
+        <div class="list-row"><span class="avatar"></span><strong>Large surface</strong><span>650ms</span></div>
+      </div>
+      <div class="actions">
+        <button data-close-drawer>Close sheet</button>
+      </div>
+    </aside>
+
+    <div class="toast" data-toast-node>
+      <strong>Snackbar</strong>
+      <span>Rises from the edge and dismisses toward it.</span>
+    </div>
+
     <script>
-      const d = document.querySelector("dialog");
-      document.querySelector("[data-open]").onclick = () => d.showModal();
-      document.querySelector("[data-close]").onclick = () => d.close();
+      const dialog = document.querySelector("dialog");
+      const drawer = document.querySelector("[data-drawer]");
+      const menu = document.querySelector("[data-menu]");
+      const tabs = document.querySelector(".tabs");
+      const tabPanel = document.querySelector("[data-tab-panel]");
+      const toast = document.querySelector("[data-toast-node]");
+      const list = document.querySelector("[data-list]");
+      const tabCopy = [
+        ["Default spatial spring", "Content fades with a small x movement under 16px."],
+        ["Visible focus state", "Focus rings animate opacity and color, never transform only."],
+        ["Faster exits", "Dismissals use less attention than entrances."],
+      ];
+
+      document.querySelectorAll("[data-open-dialog]").forEach((button) => {
+        button.addEventListener("click", () => dialog.showModal());
+      });
+
+      document.querySelector("[data-close-dialog]").addEventListener("click", () => {
+        dialog.close();
+      });
+
+      document.querySelector("[data-open-drawer]").addEventListener("click", () => {
+        drawer.classList.add("is-open");
+      });
+
+      document.querySelector("[data-close-drawer]").addEventListener("click", () => {
+        drawer.classList.remove("is-open");
+      });
+
+      document.querySelector("[data-menu-toggle]").addEventListener("click", () => {
+        menu.classList.toggle("is-open");
+      });
+
+      document.querySelector("[data-switch]").addEventListener("click", (event) => {
+        const checked = event.currentTarget.getAttribute("aria-checked") === "true";
+        event.currentTarget.setAttribute("aria-checked", String(!checked));
+      });
+
+      document.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const active = Number(button.dataset.tab);
+          tabs.dataset.active = String(active);
+          tabPanel.innerHTML = `<h3>${tabCopy[active][0]}</h3><p>${tabCopy[active][1]}</p>`;
+        });
+      });
+
+      document.querySelector("[data-add-row]").addEventListener("click", () => {
+        const row = document.createElement("div");
+        row.className = "list-row";
+        row.innerHTML = '<span class="avatar"></span><strong>New component row</strong><span>fresh</span>';
+        list.prepend(row);
+        if (list.children.length > 4) {
+          const last = list.lastElementChild;
+          last.classList.add("is-removing");
+          setTimeout(() => last.remove(), 220);
+        }
+      });
+
+      function showToast() {
+        toast.classList.add("is-open");
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove("is-open"), 2200);
+      }
+
+      document.querySelector("[data-toast]").addEventListener("click", showToast);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -80px", threshold: 0.2 },
+      );
+
+      document.querySelectorAll(".section:not(.is-visible)").forEach((section) => {
+        observer.observe(section);
+      });
     </script>
   </body>
 </html>
