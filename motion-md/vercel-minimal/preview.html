@@ -6,235 +6,359 @@
     <title>Vercel Minimal Preview</title>
     <style>
       :root {
+        --ease-a: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-b: linear;
+        --ease-c: cubic-bezier(0.7, 0, 0.84, 0);
+        --fast: 120ms;
+        --default: 240ms;
+        --slow: 480ms;
         --bg: #050505;
         --fg: #fafafa;
         --muted: #a1a1aa;
-        --line: rgba(255, 255, 255, 0.13);
-        --panel: rgba(255, 255, 255, 0.045);
-        --motion-ease-minimal: cubic-bezier(0.16, 1, 0.3, 1);
-        --motion-fast: 120ms;
-        --motion-default: 240ms;
-        --motion-slow: 480ms;
+        --surface: rgba(20,20,20,.86);
+        --line: rgba(255,255,255,.12);
+        --accent: #ffffff;
+        --accent-2: #7dd3fc;
+        --accent-3: #111111;
+        --glow: rgba(125,211,252,.15);
+        --font: Geist, Inter, ui-sans-serif, system-ui, sans-serif;
       }
-      * {
-        box-sizing: border-box;
-      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         min-height: 100vh;
         color: var(--fg);
-        font-family:
-          Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
+        font-family: var(--font);
         background:
-          radial-gradient(
-            circle at 50% 0%,
-            rgba(255, 255, 255, 0.16),
-            transparent 34rem
-          ),
-          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-          ),
+          radial-gradient(circle at 16% 8%, var(--glow), transparent 28rem),
+          radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 24rem),
           var(--bg);
-        background-size:
-          auto,
-          48px 48px,
-          48px 48px,
-          auto;
-        opacity: 0;
-        animation: page var(--motion-default) var(--motion-ease-minimal)
-          forwards;
       }
       body::before {
-        content: "";
         position: fixed;
         inset: 0;
-        background: linear-gradient(
-          110deg,
-          transparent 35%,
-          rgba(255, 255, 255, 0.11),
-          transparent 65%
-        );
-        transform: translateX(-70%);
-        animation: beam 8s linear infinite;
-        pointer-events: none;
+        z-index: -1;
+        background-image:
+          linear-gradient(color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px),
+          linear-gradient(90deg, color-mix(in srgb, var(--fg) 5%, transparent) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 82%);
+        content: "";
       }
       main {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 56px 0;
+        width: min(1160px, calc(100% - 32px));
+        margin: auto;
+        padding: 48px 0 88px;
       }
       .hero {
-        padding: 88px 0 44px;
-        transform: translateY(16px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+        gap: 24px;
+        align-items: end;
+        min-height: 72vh;
+        padding: 48px 0;
         opacity: 0;
-        animation: rise var(--motion-slow) var(--motion-ease-minimal) 0.05s
-          forwards;
+        transform: translateY(24px);
+        animation: page-in var(--slow) var(--ease-a) forwards, hero-minimal var(--slow) var(--ease-a) forwards;
       }
-      .eyebrow {
-        color: var(--muted);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
+      .eyebrow, .kicker {
+        color: var(--accent);
         font-size: 12px;
+        font-weight: 850;
+        letter-spacing: .16em;
+        text-transform: uppercase;
       }
+      h1, h2, h3, p { margin-top: 0; }
       h1 {
-        max-width: 760px;
-        margin: 16px 0;
-        font-size: clamp(48px, 9vw, 112px);
-        line-height: 0.9;
-        letter-spacing: -0.08em;
+        max-width: 820px;
+        margin: 14px 0 18px;
+        font-size: clamp(46px, 8vw, 104px);
+        line-height: .9;
+        letter-spacing: -.07em;
       }
-      .lede {
-        max-width: 620px;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.7;
+      h2 {
+        margin-bottom: 10px;
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: .96;
+        letter-spacing: -.045em;
       }
-      .actions {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 28px;
-      }
-      button,
-      .ghost {
+      h3 { margin-bottom: 9px; font-size: 20px; letter-spacing: -.02em; }
+      .lede, .panel p, .card p { color: var(--muted); line-height: 1.6; }
+      .lede { max-width: 680px; font-size: 18px; }
+      .row, .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+      .actions { margin-top: 26px; }
+      button {
         border: 1px solid var(--line);
         border-radius: 999px;
-        color: var(--fg);
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--fg);
+        color: var(--bg);
         padding: 12px 18px;
-        font: inherit;
+        font: 800 14px var(--font);
         cursor: pointer;
+        box-shadow: 0 14px 36px color-mix(in srgb, var(--accent) 20%, transparent);
         transition:
-          background var(--motion-fast) var(--motion-ease-minimal),
-          border-color var(--motion-fast),
-          transform var(--motion-fast),
-          box-shadow var(--motion-fast);
+          transform var(--fast) var(--ease-a),
+          background var(--fast) var(--ease-a),
+          color var(--fast) var(--ease-a),
+          border-color var(--fast) var(--ease-a),
+          box-shadow var(--fast) var(--ease-a);
       }
-      button:hover,
-      .ghost:hover {
+      button:hover {
+        border-color: color-mix(in srgb, var(--accent) 44%, var(--line));
+        background: var(--accent);
+        color: var(--bg);
         transform: translateY(-1px);
-        border-color: rgba(255, 255, 255, 0.42);
-        background: rgba(255, 255, 255, 0.13);
-        box-shadow: 0 0 32px rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 54px var(--glow);
       }
-      button:active {
-        transform: scale(0.99);
+      button:active { transform: scale(.99); transition-duration: 80ms; }
+      button:focus-visible, input:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--accent) 32%, transparent);
+        outline-offset: 4px;
       }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        margin-top: 44px;
-      }
-      .card {
-        min-height: 270px;
-        padding: 22px;
+      .secondary { background: transparent; color: var(--fg); box-shadow: none; }
+      .hero-panel, .card, .panel, dialog, .drawer {
         border: 1px solid var(--line);
-        border-radius: 24px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.075),
-          rgba(255, 255, 255, 0.025)
-        );
-        box-shadow: inset 0 1px rgba(255, 255, 255, 0.08);
+        background: var(--surface);
+        box-shadow: 0 24px 80px color-mix(in srgb, var(--fg) 12%, transparent);
+        backdrop-filter: blur(20px);
+      }
+      .hero-panel {
+        border-radius: 34px;
+        padding: 20px;
         opacity: 0;
         transform: translateY(12px);
-        animation: rise var(--motion-default) var(--motion-ease-minimal)
-          forwards;
+        animation: card-in var(--default) var(--ease-a) 90ms forwards;
+      }
+      .visual {
+        position: relative;
+        overflow: hidden;
+        height: 210px;
+        border-radius: 28px;
+        background:
+          linear-gradient(135deg, var(--accent), var(--accent-2)),
+          var(--accent-3);
+      }
+      .visual::before {
+        position: absolute;
+        inset: 16%;
+        border: 1px solid color-mix(in srgb, white 35%, transparent);
+        border-radius: 24px;
+        background: color-mix(in srgb, white 24%, transparent);
+        content: "";
+        animation: ambient var(--slow) var(--ease-a) infinite alternate;
+      }
+      .visual::after {
+        position: absolute;
+        inset: auto 16px 16px 16px;
+        height: 42px;
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--bg) 75%, transparent);
+        content: "";
+      }
+      .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+      .stat { border-radius: 18px; background: color-mix(in srgb, var(--surface) 78%, var(--accent-3)); padding: 12px; }
+      .stat strong { display: block; font-size: 24px; letter-spacing: -.055em; }
+      .stat span { color: var(--muted); font-size: 12px; font-weight: 800; }
+      .section { margin-top: 36px; opacity: 0; transform: translateY(24px); }
+      .section.is-visible { animation: section-in var(--default) var(--ease-a) forwards; }
+      .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 18px; }
+      .section-head p { max-width: 500px; margin-bottom: 0; color: var(--muted); line-height: 1.58; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .card {
+        min-height: 245px;
+        border-radius: 28px;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: card-in var(--default) var(--ease-a) calc(var(--i) * 45ms) forwards;
         transition:
-          border-color var(--motion-fast),
-          background var(--motion-fast),
-          transform var(--motion-fast);
-      }
-      .card:nth-child(2) {
-        animation-delay: 35ms;
-      }
-      .card:nth-child(3) {
-        animation-delay: 70ms;
+          transform var(--default) var(--ease-a),
+          border-color var(--fast) var(--ease-a),
+          background var(--fast) var(--ease-a),
+          box-shadow var(--default) var(--ease-a),
+          filter var(--fast) var(--ease-a);
       }
       .card:hover {
-        transform: translateY(-1px);
-        border-color: rgba(255, 255, 255, 0.34);
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.11),
-          rgba(255, 255, 255, 0.035)
-        );
+        border-color: color-mix(in srgb, var(--accent) 46%, var(--line));
+        transform: translateY(0);
+        box-shadow: 0 30px 90px var(--glow);
       }
-      .metric {
-        font-size: 54px;
-        letter-spacing: -0.06em;
-        margin-top: 70px;
-      }
-      .card p {
-        color: var(--muted);
-        line-height: 1.6;
-      }
-      dialog {
-        width: min(520px, calc(100% - 32px));
+      .metric { margin: 24px 0 8px; font-size: 56px; font-weight: 900; letter-spacing: -.07em; }
+      .component-list { display: grid; gap: 9px; padding: 0; margin: 18px 0 0; list-style: none; }
+      .component-list li {
         border: 1px solid var(--line);
-        border-radius: 24px;
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--surface) 72%, var(--accent-3));
+        padding: 11px 12px;
+        color: var(--muted);
+        opacity: 0;
+        transform: translateY(10px);
+        animation: row-in var(--default) var(--ease-a) calc(var(--i) * 35ms) forwards;
+      }
+      .lab { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+      .panel { border-radius: 28px; padding: 20px; }
+      .tabs {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 5px;
+        background: color-mix(in srgb, var(--surface) 70%, var(--accent-3));
+      }
+      .indicator {
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        left: 5px;
+        width: calc((100% - 22px) / 3);
+        border-radius: 15px;
+        background: var(--accent);
+        transition: transform var(--default) var(--ease-a);
+      }
+      .tabs[data-active="1"] .indicator { transform: translateX(calc(100% + 6px)); }
+      .tabs[data-active="2"] .indicator { transform: translateX(calc(200% + 12px)); }
+      .tab { position: relative; z-index: 1; background: transparent; color: var(--fg); box-shadow: none; }
+      .tab:hover { background: transparent; transform: none; box-shadow: none; }
+      .tab-panel { min-height: 112px; padding-top: 16px; animation: content-in var(--fast) var(--ease-a); }
+      .popover { position: relative; margin-top: 14px; }
+      .menu {
+        position: absolute;
+        z-index: 3;
+        top: calc(100% + 10px);
+        left: 0;
+        width: min(270px, calc(100vw - 64px));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--surface);
+        padding: 8px;
+        box-shadow: 0 24px 64px color-mix(in srgb, var(--fg) 18%, transparent);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px) scale(.98);
+        transform-origin: 28px top;
+        transition: opacity var(--fast) var(--ease-a), transform var(--default) var(--ease-a), filter var(--fast) var(--ease-a);
+      }
+      .menu.is-open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); filter: none; }
+      .menu div { border-radius: 14px; padding: 10px; color: var(--muted); transition: background var(--fast) var(--ease-a), color var(--fast) var(--ease-a); }
+      .menu div:hover { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--fg); }
+      label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+      input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--surface) 80%, var(--bg));
         color: var(--fg);
-        background: #090909;
+        padding: 12px 13px;
+        font: 700 14px var(--font);
+        transition: border-color var(--fast) var(--ease-a), box-shadow var(--fast) var(--ease-a), background var(--fast) var(--ease-a);
+      }
+      input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
+      .helper { color: var(--accent); opacity: 0; transform: translateY(-4px); transition: opacity var(--fast) var(--ease-a), transform var(--fast) var(--ease-a); }
+      input:focus + .helper { opacity: 1; transform: translateY(0); }
+      .list { display: grid; gap: 9px; margin-top: 12px; }
+      .row-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--surface) 78%, var(--accent-3));
+        padding: 10px 12px;
+        opacity: 0;
+        transform: translateY(10px);
+        animation: row-in var(--default) var(--ease-a) calc(var(--i) * 35ms) forwards;
+        transition: opacity var(--fast) var(--ease-a), transform var(--default) var(--ease-a), background var(--fast) var(--ease-a);
+      }
+      .row-item:hover { background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+      .row-item.is-removing { opacity: 0; transform: scale(.98); }
+      .dot { width: 28px; height: 28px; border-radius: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+      .skeleton { overflow: hidden; height: 12px; border-radius: 999px; background: color-mix(in srgb, var(--fg) 10%, transparent); }
+      .skeleton::before { display: block; width: 45%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--fg) 18%, transparent), transparent); content: ""; animation: shimmer 1200ms var(--ease-b) infinite; }
+      dialog {
+        width: min(560px, calc(100% - 32px));
+        border: 0;
+        border-radius: 30px;
+        color: var(--fg);
         padding: 0;
-        box-shadow: 0 24px 100px rgba(0, 0, 0, 0.75);
       }
-      dialog::backdrop {
-        background: rgba(0, 0, 0, 0.72);
-        backdrop-filter: blur(8px);
-      }
-      dialog[open] {
-        animation: modal 180ms var(--motion-ease-minimal);
-      }
-      .modal-body {
+      dialog::backdrop { background: color-mix(in srgb, var(--bg) 55%, rgba(0,0,0,.5)); backdrop-filter: blur(8px); }
+      dialog[open] { animation: dialog-in var(--default) var(--ease-a); }
+      .modal-body { padding: 26px; }
+      .drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 5;
+        width: min(420px, 92vw);
+        height: 100dvh;
+        border-block: 0;
+        border-right: 0;
+        border-radius: 28px 0 0 28px;
         padding: 26px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: opacity var(--fast) var(--ease-a), transform var(--slow) var(--ease-a);
       }
-      @keyframes page {
-        to {
-          opacity: 1;
-        }
+      .drawer.is-open { opacity: 1; pointer-events: auto; transform: translateX(0); }
+      .toast {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 6;
+        width: min(360px, calc(100vw - 44px));
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--fg);
+        color: var(--bg);
+        padding: 14px 16px;
+        box-shadow: 0 24px 70px color-mix(in srgb, var(--fg) 22%, transparent);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(16px) scale(.98);
+        transition: opacity var(--fast) var(--ease-a), transform var(--default) var(--ease-a);
       }
-      @keyframes rise {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes modal {
-        from {
-          opacity: 0;
-          transform: scale(0.98);
-        }
-      }
-      @keyframes beam {
-        to {
-          transform: translateX(70%);
-        }
-      }
-      @media (max-width: 760px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
-        .hero {
-          padding-top: 52px;
-        }
+      .toast.is-open { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+      @keyframes page-in { to { opacity: 1; transform: translateY(0); } }
+      @keyframes card-in { to { opacity: 1; transform: translateY(0) scale(1) rotate(0); } }
+      @keyframes section-in { to { opacity: 1; transform: translateY(0); } }
+      @keyframes row-in { to { opacity: 1; transform: translateY(0); } }
+      @keyframes content-in { from { opacity: 0; transform: translateY(6px); } }
+      @keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+      @keyframes ambient { to { transform: translateY(-8px) scale(1.03); border-radius: 34px; } }
+      @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(240%); } }
+      @keyframes hero-impact { 0% { transform: scale(1.3); } 55% { transform: scale(.92); } 100% { transform: scale(1); } }
+      @keyframes hero-glitch { 0%, 18% { filter: opacity(.3); transform: translateX(-8px); } 32% { filter: opacity(1); transform: translateX(6px); } 100% { filter: none; transform: translateX(0); } }
+      @keyframes hero-cinematic { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+      @keyframes hero-fluid { to { filter: saturate(1.04); } }
+      @keyframes hero-enterprise { to { filter: none; } }
+      @keyframes hero-editorial { from { letter-spacing: -.03em; } }
+      @keyframes hero-productive { to { filter: none; } }
+      @keyframes hero-spring { 50% { transform: translateY(-3px); } }
+      @keyframes hero-snappy { to { filter: none; } }
+      @keyframes hero-material { 50% { transform: translateY(-4px) scale(1.005); } }
+      @keyframes hero-polished { to { filter: saturate(1.08); } }
+      @keyframes hero-minimal { to { filter: none; } }
+      @media (max-width: 900px) {
+        main { width: min(100% - 24px, 720px); padding-top: 24px; }
+        .hero, .grid, .lab { grid-template-columns: 1fr; min-height: auto; }
+        .section-head { display: block; }
       }
       @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
           animation-duration: 1ms !important;
           animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
           transition-duration: 1ms !important;
+        }
+        .hero, .section, .card, .hero-panel, .row-item, .component-list li {
+          opacity: 1 !important;
+          transform: none !important;
         }
       }
     </style>
@@ -242,55 +366,193 @@
   <body>
     <main>
       <section class="hero">
-        <div class="eyebrow">Vercel Minimal</div>
-        <h1>Quiet motion for sharp developer surfaces.</h1>
-        <p class="lede">
-          A dark, restrained preview where the button, cards, and dialog respond
-          with tiny transforms, crisp borders, and subtle light.
-        </p>
-        <div class="actions">
-          <button data-open>Open modal</button
-          ><button class="ghost">Deploy preview</button>
+        <div>
+          <div class="eyebrow">Vercel Minimal</div>
+          <h1>Quiet, crisp motion for dark developer surfaces.</h1>
+          <p class="lede">Motion stays almost invisible until interaction: opacity, tiny transforms, border glow, and restrained choreography.</p>
+          <div class="actions">
+            <button data-open-dialog>Open dialog</button>
+            <button class="secondary" data-open-drawer>Open panel</button>
+            <button class="secondary" data-toast>Show toast</button>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Page animation summary">
+          <div class="visual"></div>
+          <div class="stat-grid">
+            <div class="stat"><strong>Page</strong><span>Page fades 240ms; hero rises 16px; cards stagger 35ms with no theatrical movement.</span></div>
+            <div class="stat"><strong>UI</strong><span>Command palette fades and scales; highlight changes instantly with a 120ms background fade.</span></div>
+            <div class="stat"><strong>A11y</strong><span>Decorative beams and scans stop; opacity transitions remain.</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section is-visible">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Component Motion</div>
+            <h2>Concrete component rules from MOTION.md.</h2>
+          </div>
+          <p>These examples expose page entrance, component hover/press, overlays, tabs, forms, list insertion, and loading behavior in one preview.</p>
+        </div>
+        <div class="grid">
+          <article class="card" style="--i:0">
+            <div class="kicker">Button</div>
+            <div class="metric">Fast</div>
+            <p>Hover, press, and focus states use the style-specific timing.</p>
+            <button>Try feedback</button>
+          </article>
+          <article class="card" style="--i:1">
+            <div class="kicker">Card</div>
+            <div class="metric">Card</div>
+            <p>Entrance and hover follow the component motion table.</p>
+            <div class="skeleton"></div>
+          </article>
+          <article class="card" style="--i:2">
+            <div class="kicker">Rules</div>
+            <ul class="component-list">
+                <li style="--i:0">Button hover changes border and background.</li>
+                <li style="--i:1">Card hover brightens border only.</li>
+                <li style="--i:2">Code copy button fades in on hover.</li>
+                <li style="--i:3">Tabs indicator slides 240ms.</li>
+            </ul>
+          </article>
         </div>
       </section>
-      <section class="grid">
-        <article class="card">
-          <div class="eyebrow">Button</div>
-          <div class="metric">120ms</div>
-          <p>
-            Hover states stay nearly invisible until the exact moment they
-            matter.
-          </p>
-        </article>
-        <article class="card">
-          <div class="eyebrow">Card</div>
-          <div class="metric">+1px</div>
-          <p>
-            Panels brighten instead of bouncing, keeping the product surface
-            fast and calm.
-          </p>
-        </article>
-        <article class="card">
-          <div class="eyebrow">Dialog</div>
-          <div class="metric">.98</div>
-          <p>The modal opens through opacity and a compact scale transition.</p>
-        </article>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Interactive Lab</div>
+            <h2>Menus, tabs, forms, lists, and loaders.</h2>
+          </div>
+          <p>Use these controls to test whether component motion feels like the source motion system rather than a generic fade-in.</p>
+        </div>
+        <div class="lab">
+          <article class="panel">
+            <h3>Tabs and popover</h3>
+            <div class="tabs" data-active="0">
+              <span class="indicator" aria-hidden="true"></span>
+              <button class="tab" data-tab="0">Page</button>
+              <button class="tab" data-tab="1">State</button>
+              <button class="tab" data-tab="2">Exit</button>
+            </div>
+            <div class="tab-panel" data-tab-panel>
+              <h3>Page animation</h3>
+              <p>Page fades 240ms; hero rises 16px; cards stagger 35ms with no theatrical movement.</p>
+            </div>
+            <div class="popover">
+              <button class="secondary" data-menu-toggle>Toggle menu</button>
+              <div class="menu" data-menu>
+                <div>Component-specific timing</div>
+                <div>Trigger-origin reveal</div>
+                <div>Reduced-motion safe state</div>
+              </div>
+            </div>
+          </article>
+          <article class="panel">
+            <h3>Form, list, and loading</h3>
+            <label>
+              Motion field
+              <input value="Vercel Minimal" />
+              <span class="helper">Focus feedback uses the style's component rule.</span>
+            </label>
+            <div class="list" data-list>
+              <div class="row-item" style="--i:0"><span class="dot"></span><strong>Dialog</strong><span>enter</span></div>
+              <div class="row-item" style="--i:1"><span class="dot"></span><strong>Toast</strong><span>edge</span></div>
+              <div class="row-item" style="--i:2"><span class="dot"></span><strong>Loading</strong><span>stable</span></div>
+            </div>
+            <div class="actions">
+              <button class="secondary" data-add-row>Add row</button>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
+
     <dialog>
       <div class="modal-body">
-        <div class="eyebrow">Dialog</div>
-        <h2>Minimal panel</h2>
-        <p class="lede">
-          Scale, opacity, border and glow are enough. No theatrical movement.
-        </p>
-        <button data-close>Close</button>
+        <div class="kicker">Dialog</div>
+        <h2>Overlay motion follows Vercel Minimal.</h2>
+        <p class="lede">Command palette fades and scales; highlight changes instantly with a 120ms background fade.</p>
+        <div class="actions">
+          <button data-close-dialog>Close</button>
+          <button class="secondary" data-toast>Show toast</button>
+        </div>
       </div>
     </dialog>
+
+    <aside class="drawer" data-drawer aria-label="Panel motion summary">
+      <div class="kicker">Panel / Drawer</div>
+      <h2>Page and component motion stay separate.</h2>
+      <p class="lede">Page fades 240ms; hero rises 16px; cards stagger 35ms with no theatrical movement.</p>
+      <div class="list">
+        <div class="row-item" style="--i:0"><span class="dot"></span><strong>Page entrance</strong><span>global</span></div>
+        <div class="row-item" style="--i:1"><span class="dot"></span><strong>Component state</strong><span>local</span></div>
+        <div class="row-item" style="--i:2"><span class="dot"></span><strong>Reduced motion</strong><span>safe</span></div>
+      </div>
+      <div class="actions"><button data-close-drawer>Close panel</button></div>
+    </aside>
+
+    <div class="toast" data-toast-node>
+      <strong>Vercel Minimal</strong><br />
+      <span>Toast motion uses the component rule from MOTION.md.</span>
+    </div>
+
     <script>
-      const d = document.querySelector("dialog");
-      document.querySelector("[data-open]").onclick = () => d.showModal();
-      document.querySelector("[data-close]").onclick = () => d.close();
+      const dialog = document.querySelector('dialog');
+      const drawer = document.querySelector('[data-drawer]');
+      const menu = document.querySelector('[data-menu]');
+      const tabs = document.querySelector('.tabs');
+      const tabPanel = document.querySelector('[data-tab-panel]');
+      const toast = document.querySelector('[data-toast-node]');
+      const list = document.querySelector('[data-list]');
+      const tabCopy = [
+        ['Page animation', 'Page fades 240ms; hero rises 16px; cards stagger 35ms with no theatrical movement.'],
+        ['Component state', 'Command palette fades and scales; highlight changes instantly with a 120ms background fade.'],
+        ['Reduced motion', 'Decorative beams and scans stop; opacity transitions remain.'],
+      ];
+
+      document.querySelectorAll('[data-open-dialog]').forEach((button) => {
+        button.addEventListener('click', () => dialog.showModal());
+      });
+      document.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
+      document.querySelector('[data-open-drawer]').addEventListener('click', () => drawer.classList.add('is-open'));
+      document.querySelector('[data-close-drawer]').addEventListener('click', () => drawer.classList.remove('is-open'));
+      document.querySelector('[data-menu-toggle]').addEventListener('click', () => menu.classList.toggle('is-open'));
+      document.querySelectorAll('[data-tab]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const active = Number(button.dataset.tab);
+          tabs.dataset.active = String(active);
+          tabPanel.innerHTML = '<h3>' + tabCopy[active][0] + '</h3><p>' + tabCopy[active][1] + '</p>';
+        });
+      });
+      document.querySelector('[data-add-row]').addEventListener('click', () => {
+        const row = document.createElement('div');
+        row.className = 'row-item';
+        row.style.setProperty('--i', '0');
+        row.innerHTML = '<span class="dot"></span><strong>New component</strong><span>fresh</span>';
+        list.prepend(row);
+        if (list.children.length > 4) {
+          const last = list.lastElementChild;
+          last.classList.add('is-removing');
+          setTimeout(() => last.remove(), 220);
+        }
+      });
+      function showToast() {
+        toast.classList.add('is-open');
+        clearTimeout(showToast.timer);
+        showToast.timer = setTimeout(() => toast.classList.remove('is-open'), 2200);
+      }
+      document.querySelectorAll('[data-toast]').forEach((button) => button.addEventListener('click', showToast));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -80px', threshold: 0.2 });
+      document.querySelectorAll('.section:not(.is-visible)').forEach((section) => observer.observe(section));
     </script>
   </body>
 </html>
