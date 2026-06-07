@@ -2,11 +2,34 @@
 
 A curated collection of `MOTION.md` files that help AI agents generate stunning, non-boring UI animations.
 
-## Demo
 
-![Motion style list](asset/list.gif)
+## Preview Gallery
 
-![Motion generation process](asset/process.gif)
+Each preview uses the same UI elements, while the visual style and motion behavior are generated from its own `MOTION.md`.
+
+| Material Expressive | Apple Fluid |
+| --- | --- |
+| ![Material Expressive preview](asset/previews/material-expressive.gif) | ![Apple Fluid preview](asset/previews/apple-fluid.gif) |
+
+| Fluent Productive | Carbon Enterprise |
+| --- | --- |
+| ![Fluent Productive preview](asset/previews/fluent-productive.gif) | ![Carbon Enterprise preview](asset/previews/carbon-enterprise.gif) |
+
+| Linear Snappy | Stripe Polished |
+| --- | --- |
+| ![Linear Snappy preview](asset/previews/linear-snappy.gif) | ![Stripe Polished preview](asset/previews/stripe-polished.gif) |
+
+| Vercel Minimal | Framer Spring |
+| --- | --- |
+| ![Vercel Minimal preview](asset/previews/vercel-minimal.gif) | ![Framer Spring preview](asset/previews/framer-spring.gif) |
+
+| GSAP Cinematic | Game Impact |
+| --- | --- |
+| ![GSAP Cinematic preview](asset/previews/gsap-cinematic.gif) | ![Game Impact preview](asset/previews/game-impact.gif) |
+
+| Glitch Cyberpunk | Editorial Scroll |
+| --- | --- |
+| ![Glitch Cyberpunk preview](asset/previews/glitch-cyberpunk.gif) | ![Editorial Scroll preview](asset/previews/editorial-scroll.gif) |
 
 ## What Is This?
 
