@@ -14,29 +14,20 @@
 
 每个预览都使用相同的 UI 元素，但视觉风格和动画行为都根据各自的 `MOTION.md` 生成。
 
-| Material Expressive | Apple Fluid |
-| --- | --- |
-| ![Material Expressive 预览](asset/previews/material-expressive.gif) | ![Apple Fluid 预览](asset/previews/apple-fluid.gif) |
-
-| Fluent Productive | Carbon Enterprise |
-| --- | --- |
-| ![Fluent Productive 预览](asset/previews/fluent-productive.gif) | ![Carbon Enterprise 预览](asset/previews/carbon-enterprise.gif) |
-
-| Linear Snappy | Stripe Polished |
-| --- | --- |
-| ![Linear Snappy 预览](asset/previews/linear-snappy.gif) | ![Stripe Polished 预览](asset/previews/stripe-polished.gif) |
-
-| Vercel Minimal | Framer Spring |
-| --- | --- |
-| ![Vercel Minimal 预览](asset/previews/vercel-minimal.gif) | ![Framer Spring 预览](asset/previews/framer-spring.gif) |
-
-| GSAP Cinematic | Game Impact |
-| --- | --- |
-| ![GSAP Cinematic 预览](asset/previews/gsap-cinematic.gif) | ![Game Impact 预览](asset/previews/game-impact.gif) |
-
-| Glitch Cyberpunk | Editorial Scroll |
-| --- | --- |
-| ![Glitch Cyberpunk 预览](asset/previews/glitch-cyberpunk.gif) | ![Editorial Scroll 预览](asset/previews/editorial-scroll.gif) |
+<table width="100%">
+  <tr><td width="100%"><strong>Material Expressive</strong><br /><img src="asset/previews/material-expressive.gif" alt="Material Expressive 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Apple Fluid</strong><br /><img src="asset/previews/apple-fluid.gif" alt="Apple Fluid 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Fluent Productive</strong><br /><img src="asset/previews/fluent-productive.gif" alt="Fluent Productive 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Carbon Enterprise</strong><br /><img src="asset/previews/carbon-enterprise.gif" alt="Carbon Enterprise 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Linear Snappy</strong><br /><img src="asset/previews/linear-snappy.gif" alt="Linear Snappy 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Stripe Polished</strong><br /><img src="asset/previews/stripe-polished.gif" alt="Stripe Polished 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Vercel Minimal</strong><br /><img src="asset/previews/vercel-minimal.gif" alt="Vercel Minimal 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Framer Spring</strong><br /><img src="asset/previews/framer-spring.gif" alt="Framer Spring 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>GSAP Cinematic</strong><br /><img src="asset/previews/gsap-cinematic.gif" alt="GSAP Cinematic 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Game Impact</strong><br /><img src="asset/previews/game-impact.gif" alt="Game Impact 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Glitch Cyberpunk</strong><br /><img src="asset/previews/glitch-cyberpunk.gif" alt="Glitch Cyberpunk 预览" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Editorial Scroll</strong><br /><img src="asset/previews/editorial-scroll.gif" alt="Editorial Scroll 预览" width="100%" /></td></tr>
+</table>
 
 ## 这是什么？
 

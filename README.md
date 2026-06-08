@@ -4,25 +4,26 @@
 
 A curated collection of `MOTION.md` files that help AI agents generate stunning, non-boring UI animations.
 
+[中文版](README.zh-CN.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | [العربية](README.ar.md)
 
 ## Preview Gallery
 
 Each preview uses the same UI elements, while the visual style and motion behavior are generated from its own `MOTION.md`.
 
-| Style Preview |
-| --- |
-| **Material Expressive**<br />![Material Expressive preview](asset/previews/material-expressive.gif) |
-| **Apple Fluid**<br />![Apple Fluid preview](asset/previews/apple-fluid.gif) |
-| **Fluent Productive**<br />![Fluent Productive preview](asset/previews/fluent-productive.gif) |
-| **Carbon Enterprise**<br />![Carbon Enterprise preview](asset/previews/carbon-enterprise.gif) |
-| **Linear Snappy**<br />![Linear Snappy preview](asset/previews/linear-snappy.gif) |
-| **Stripe Polished**<br />![Stripe Polished preview](asset/previews/stripe-polished.gif) |
-| **Vercel Minimal**<br />![Vercel Minimal preview](asset/previews/vercel-minimal.gif) |
-| **Framer Spring**<br />![Framer Spring preview](asset/previews/framer-spring.gif) |
-| **GSAP Cinematic**<br />![GSAP Cinematic preview](asset/previews/gsap-cinematic.gif) |
-| **Game Impact**<br />![Game Impact preview](asset/previews/game-impact.gif) |
-| **Glitch Cyberpunk**<br />![Glitch Cyberpunk preview](asset/previews/glitch-cyberpunk.gif) |
-| **Editorial Scroll**<br />![Editorial Scroll preview](asset/previews/editorial-scroll.gif) |
+<table width="100%">
+  <tr><td width="100%"><strong>Material Expressive</strong><br /><img src="asset/previews/material-expressive.gif" alt="Material Expressive preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Apple Fluid</strong><br /><img src="asset/previews/apple-fluid.gif" alt="Apple Fluid preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Fluent Productive</strong><br /><img src="asset/previews/fluent-productive.gif" alt="Fluent Productive preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Carbon Enterprise</strong><br /><img src="asset/previews/carbon-enterprise.gif" alt="Carbon Enterprise preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Linear Snappy</strong><br /><img src="asset/previews/linear-snappy.gif" alt="Linear Snappy preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Stripe Polished</strong><br /><img src="asset/previews/stripe-polished.gif" alt="Stripe Polished preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Vercel Minimal</strong><br /><img src="asset/previews/vercel-minimal.gif" alt="Vercel Minimal preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Framer Spring</strong><br /><img src="asset/previews/framer-spring.gif" alt="Framer Spring preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>GSAP Cinematic</strong><br /><img src="asset/previews/gsap-cinematic.gif" alt="GSAP Cinematic preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Game Impact</strong><br /><img src="asset/previews/game-impact.gif" alt="Game Impact preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Glitch Cyberpunk</strong><br /><img src="asset/previews/glitch-cyberpunk.gif" alt="Glitch Cyberpunk preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Editorial Scroll</strong><br /><img src="asset/previews/editorial-scroll.gif" alt="Editorial Scroll preview" width="100%" /></td></tr>
+</table>
 
 ## What Is This?
 
@@ -38,7 +39,10 @@ awesome-motion-md/
 ├── motion-md/            # Motion style rulebooks
 ├── docs/                 # Guides and examples
 ├── README.md             # English README
-└── README.zh-CN.md       # Chinese README
+├── README.zh-CN.md       # Chinese README
+├── README.ja.md          # Japanese README
+├── README.ko.md          # Korean README
+└── README.ar.md          # Arabic README
 ```
 
 ## Motion Styles
