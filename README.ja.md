@@ -1,6 +1,6 @@
 # awesome-motion.md
 
-![awesome-motion.md animated logo](asset/logo-motion.svg)
+![awesome-motion.md animated logo](assets/logo-motion.svg)
 
 AI Agent が視覚的に印象的で退屈ではない UI アニメーションを生成できるようにする、`MOTION.md` ファイルの厳選コレクションです。
 
@@ -11,18 +11,18 @@ AI Agent が視覚的に印象的で退屈ではない UI アニメーション�
 各プレビューは同じ UI 要素を使用しながら、それぞれの `MOTION.md` に基づいて異なるビジュアルスタイルとモーション動作を生成しています。
 
 <table width="100%">
-  <tr><td width="100%"><strong>Material Expressive</strong><br /><img src="asset/previews/material-expressive.gif" alt="Material Expressive preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Apple Fluid</strong><br /><img src="asset/previews/apple-fluid.gif" alt="Apple Fluid preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Fluent Productive</strong><br /><img src="asset/previews/fluent-productive.gif" alt="Fluent Productive preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Carbon Enterprise</strong><br /><img src="asset/previews/carbon-enterprise.gif" alt="Carbon Enterprise preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Linear Snappy</strong><br /><img src="asset/previews/linear-snappy.gif" alt="Linear Snappy preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Stripe Polished</strong><br /><img src="asset/previews/stripe-polished.gif" alt="Stripe Polished preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Vercel Minimal</strong><br /><img src="asset/previews/vercel-minimal.gif" alt="Vercel Minimal preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Framer Spring</strong><br /><img src="asset/previews/framer-spring.gif" alt="Framer Spring preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>GSAP Cinematic</strong><br /><img src="asset/previews/gsap-cinematic.gif" alt="GSAP Cinematic preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Game Impact</strong><br /><img src="asset/previews/game-impact.gif" alt="Game Impact preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Glitch Cyberpunk</strong><br /><img src="asset/previews/glitch-cyberpunk.gif" alt="Glitch Cyberpunk preview" width="100%" /></td></tr>
-  <tr><td width="100%"><strong>Editorial Scroll</strong><br /><img src="asset/previews/editorial-scroll.gif" alt="Editorial Scroll preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Material Expressive</strong><br /><img src="assets/previews/material-expressive.gif" alt="Material Expressive preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Apple Fluid</strong><br /><img src="assets/previews/apple-fluid.gif" alt="Apple Fluid preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Fluent Productive</strong><br /><img src="assets/previews/fluent-productive.gif" alt="Fluent Productive preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Carbon Enterprise</strong><br /><img src="assets/previews/carbon-enterprise.gif" alt="Carbon Enterprise preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Linear Snappy</strong><br /><img src="assets/previews/linear-snappy.gif" alt="Linear Snappy preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Stripe Polished</strong><br /><img src="assets/previews/stripe-polished.gif" alt="Stripe Polished preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Vercel Minimal</strong><br /><img src="assets/previews/vercel-minimal.gif" alt="Vercel Minimal preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Framer Spring</strong><br /><img src="assets/previews/framer-spring.gif" alt="Framer Spring preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>GSAP Cinematic</strong><br /><img src="assets/previews/gsap-cinematic.gif" alt="GSAP Cinematic preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Game Impact</strong><br /><img src="assets/previews/game-impact.gif" alt="Game Impact preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Glitch Cyberpunk</strong><br /><img src="assets/previews/glitch-cyberpunk.gif" alt="Glitch Cyberpunk preview" width="100%" /></td></tr>
+  <tr><td width="100%"><strong>Editorial Scroll</strong><br /><img src="assets/previews/editorial-scroll.gif" alt="Editorial Scroll preview" width="100%" /></td></tr>
 </table>
 
 ## これは何ですか？
@@ -35,7 +35,7 @@ AI に単に「アニメーションを追加して」と依頼して一般的�
 
 ```txt
 awesome-motion-md/
-├── asset/                # デモ GIF とビジュアルアセット
+├── assets/                # デモ GIF とビジュアルアセット
 ├── motion-md/            # モーションスタイルのルールブック
 ├── docs/                 # ガイドとサンプル
 ├── README.md             # 英語 README
