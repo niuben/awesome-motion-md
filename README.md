@@ -1,5 +1,7 @@
 # awesome-motion.md
 
+![awesome-motion.md animated logo](asset/logo-motion.svg)
+
 A curated collection of `MOTION.md` files that help AI agents generate stunning, non-boring UI animations.
 
 

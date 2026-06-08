@@ -1,5 +1,7 @@
 # awesome-motion.md
 
+![awesome-motion.md 动态 Logo](asset/logo-motion.svg)
+
 一个 `MOTION.md` 精选集合，用来帮助 AI Agent 生成更有视觉冲击力、不呆板的 UI 动画。
 
 ## 演示

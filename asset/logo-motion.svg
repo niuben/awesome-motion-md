@@ -1,0 +1,284 @@
+<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">awesome-motion.md animated logo</title>
+  <desc id="desc">MOTION.md rulebooks flow through an AI agent to generate expressive UI animation styles.</desc>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    svg {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #060712;
+    }
+
+    .soft-grid {
+      stroke: rgba(255,255,255,.06);
+      stroke-width: 1;
+    }
+
+    .title {
+      font-size: 56px;
+      font-weight: 760;
+      letter-spacing: -2.4px;
+      fill: #f8fbff;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      font-weight: 520;
+      fill: #9aa7bd;
+    }
+
+    .label {
+      font-size: 18px;
+      font-weight: 720;
+      fill: #f8fbff;
+    }
+
+    .caption {
+      font-size: 11px;
+      font-weight: 760;
+      letter-spacing: .8px;
+      fill: #b7c4d8;
+      text-anchor: middle;
+    }
+
+    .tiny {
+      font-size: 13px;
+      font-weight: 650;
+      letter-spacing: .5px;
+      fill: #b7c4d8;
+    }
+
+    .micro {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      fill: #75849d;
+    }
+
+    .panel {
+      fill: rgba(255,255,255,.055);
+      stroke: rgba(255,255,255,.16);
+      stroke-width: 1;
+    }
+
+    .glass {
+      fill: rgba(255,255,255,.08);
+      stroke: rgba(255,255,255,.22);
+      stroke-width: 1.2;
+    }
+
+    .token {
+      fill: rgba(255,255,255,.08);
+      stroke-width: 1;
+    }
+
+    .dot {
+      filter: url(#glow);
+    }
+
+    .flow {
+      stroke-dasharray: 8 14;
+      animation: flow 1.7s linear infinite;
+    }
+
+    .rule-card {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: card-breathe 3.2s cubic-bezier(.38,1.21,.22,1) infinite;
+    }
+
+    .agent-core {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: core-pulse 2.4s cubic-bezier(.42,1.67,.21,.9) infinite;
+    }
+
+    .node-ring {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ring-spin 7.2s linear infinite;
+    }
+
+    .spark {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: spark 2.4s cubic-bezier(.16,1,.3,1) infinite;
+    }
+
+    .spark.s2 { animation-delay: .32s; }
+    .spark.s3 { animation-delay: .64s; }
+
+    .ui-card {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: ui-pop 3.6s cubic-bezier(.38,1.21,.22,1) infinite;
+    }
+
+    .ui-card.c2 { animation-delay: .18s; }
+    .ui-card.c3 { animation-delay: .36s; }
+
+    .scan {
+      animation: scan 2.9s linear infinite;
+    }
+
+    .cursor {
+      animation: cursor 3.6s cubic-bezier(.77,0,.175,1) infinite;
+    }
+
+    @keyframes flow {
+      to { stroke-dashoffset: -44; }
+    }
+
+    @keyframes card-breathe {
+      0%, 100% { transform: translateY(0) scale(1); }
+      45% { transform: translateY(-7px) scale(1.015); }
+    }
+
+    @keyframes core-pulse {
+      0%, 100% { transform: scale(1); opacity: .9; }
+      40% { transform: scale(1.08); opacity: 1; }
+    }
+
+    @keyframes ring-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spark {
+      0% { transform: scale(.5); opacity: 0; }
+      22% { transform: scale(1.12); opacity: 1; }
+      70%, 100% { transform: scale(.8) translateY(-10px); opacity: 0; }
+    }
+
+    @keyframes ui-pop {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      42% { transform: translateY(-10px) rotate(-1.2deg); }
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-58px); opacity: 0; }
+      12%, 72% { opacity: .9; }
+      100% { transform: translateY(156px); opacity: 0; }
+    }
+
+    @keyframes cursor {
+      0%, 100% { transform: translate(0, 0); }
+      35% { transform: translate(42px, -26px); }
+      62% { transform: translate(95px, 13px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow,
+      .rule-card,
+      .agent-core,
+      .node-ring,
+      .spark,
+      .ui-card,
+      .scan,
+      .cursor {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="68%">
+      <stop offset="0%" stop-color="#243BFF" stop-opacity=".34"/>
+      <stop offset="44%" stop-color="#7C3AED" stop-opacity=".16"/>
+      <stop offset="100%" stop-color="#060712" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brand" x1="139" y1="108" x2="1032" y2="342" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7DD3FC"/>
+      <stop offset=".38" stop-color="#A78BFA"/>
+      <stop offset=".68" stop-color="#F472B6"/>
+      <stop offset="1" stop-color="#FACC15"/>
+    </linearGradient>
+    <linearGradient id="green" x1="750" y1="164" x2="1042" y2="298" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34D399"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.51 0 0 0 0 0.7 0 0 0 0 1 0 0 0 .9 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+    <filter id="shadow" x="-20%" y="-25%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#000" flood-opacity=".34"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="420" rx="34" fill="#060712"/>
+  <rect width="1200" height="420" rx="34" fill="url(#bg)"/>
+  <g opacity=".7">
+    <path class="soft-grid" d="M80 76H1120M80 142H1120M80 208H1120M80 274H1120M80 340H1120"/>
+    <path class="soft-grid" d="M140 52V368M260 52V368M380 52V368M500 52V368M620 52V368M740 52V368M860 52V368M980 52V368M1100 52V368"/>
+  </g>
+
+  <text x="74" y="80" class="title">awesome-motion.md</text>
+  <text x="76" y="113" class="subtitle">Motion rulebooks that turn AI-generated UI from generic fades into intentional animation systems.</text>
+
+  <g filter="url(#shadow)">
+    <g class="rule-card">
+      <rect x="76" y="155" width="276" height="178" rx="26" class="panel"/>
+      <rect x="101" y="179" width="128" height="30" rx="15" fill="#111827" stroke="#7DD3FC" stroke-opacity=".45"/>
+      <circle cx="120" cy="194" r="5" fill="#7DD3FC" class="dot"/>
+      <rect x="134" y="189" width="64" height="10" rx="5" fill="#A78BFA" opacity=".66"/>
+      <rect x="101" y="241" width="206" height="10" rx="5" fill="#7DD3FC" opacity=".62"/>
+      <rect x="101" y="263" width="172" height="10" rx="5" fill="#A78BFA" opacity=".6"/>
+      <rect x="101" y="285" width="226" height="10" rx="5" fill="#F472B6" opacity=".58"/>
+    </g>
+    <text x="214" y="368" class="caption">RULEBOOKS: EASING / DURATION / STAGGER / A11Y</text>
+
+    <path d="M374 244C424 205 464 205 514 244" stroke="url(#brand)" stroke-width="4" stroke-linecap="round" class="flow"/>
+    <circle cx="420" cy="218" r="6" fill="#7DD3FC" class="dot"/>
+    <circle cx="474" cy="220" r="5" fill="#A78BFA" class="dot"/>
+
+    <g>
+      <rect x="514" y="148" width="180" height="190" rx="34" class="glass"/>
+      <circle cx="604" cy="226" r="58" fill="url(#brand)" opacity=".12" class="agent-core"/>
+      <g class="node-ring">
+        <path d="M604 176V194M552 230H570M638 230H656M574 188L586 200M634 188L622 200" stroke="url(#brand)" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+        <circle cx="604" cy="176" r="4" fill="#7DD3FC"/>
+        <circle cx="552" cy="230" r="4" fill="#34D399"/>
+        <circle cx="656" cy="230" r="4" fill="#F472B6"/>
+      </g>
+      <rect x="566" y="194" width="76" height="70" rx="24" fill="#0A1020" stroke="url(#brand)" stroke-width="4"/>
+      <path d="M604 184V194" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="604" cy="179" r="6" fill="#7DD3FC" class="dot"/>
+      <circle cx="586" cy="225" r="5" fill="#F8FBFF"/>
+      <circle cx="622" cy="225" r="5" fill="#F8FBFF"/>
+      <path d="M590 241C598 248 610 248 618 241" stroke="#F8FBFF" stroke-width="4" stroke-linecap="round"/>
+      <path d="M552 252C562 268 580 277 604 277C628 277 646 268 656 252" stroke="url(#brand)" stroke-width="4" stroke-linecap="round" opacity=".82"/>
+      <rect x="532" y="202" width="31" height="22" rx="11" fill="#111827" stroke="#34D399" stroke-opacity=".7"/>
+      <text x="547.5" y="217" class="micro" text-anchor="middle">TOOL</text>
+      <rect x="645" y="202" width="31" height="22" rx="11" fill="#111827" stroke="#F472B6" stroke-opacity=".7"/>
+      <text x="660.5" y="217" class="micro" text-anchor="middle">OK</text>
+      <rect x="582" y="278" width="44" height="24" rx="12" fill="#111827" stroke="#FACC15" stroke-opacity=".7"/>
+      <text x="604" y="294" class="micro" text-anchor="middle">CODE</text>
+      <circle cx="561" cy="183" r="5" fill="#7DD3FC" class="spark s1"/>
+      <circle cx="655" cy="188" r="4" fill="#FACC15" class="spark s2"/>
+      <circle cx="640" cy="292" r="5" fill="#F472B6" class="spark s3"/>
+    </g>
+    <text x="604" y="373" class="caption">AI CODING AGENT</text>
+
+    <path d="M718 244C774 284 812 286 868 244" stroke="url(#brand)" stroke-width="4" stroke-linecap="round" class="flow"/>
+    <circle cx="778" cy="274" r="6" fill="#F472B6" class="dot"/>
+    <circle cx="828" cy="268" r="5" fill="#FACC15" class="dot"/>
+
+    <g>
+      <rect x="844" y="146" width="282" height="194" rx="28" class="panel"/>
+      <rect x="869" y="173" width="232" height="128" rx="18" fill="#0A1020" stroke="rgba(255,255,255,.14)"/>
+      <rect x="869" y="173" width="232" height="34" rx="18" fill="#111827"/>
+      <circle cx="892" cy="190" r="5" fill="#F87171"/>
+      <circle cx="910" cy="190" r="5" fill="#FBBF24"/>
+      <circle cx="928" cy="190" r="5" fill="#34D399"/>
+      <rect x="889" y="225" width="70" height="54" rx="14" fill="#7DD3FC" opacity=".2" stroke="#7DD3FC" class="ui-card c1"/>
+      <rect x="974" y="218" width="84" height="68" rx="16" fill="#F472B6" opacity=".18" stroke="#F472B6" class="ui-card c2"/>
+      <rect x="1071" y="232" width="48" height="48" rx="16" fill="#FACC15" opacity=".2" stroke="#FACC15" class="ui-card c3"/>
+      <rect x="878" y="213" width="214" height="3" rx="1.5" fill="url(#green)" class="scan" opacity=".82"/>
+      <path class="cursor" d="M949 294L969 330L976 312L995 309L949 294Z" fill="#F8FBFF" stroke="#060712" stroke-width="2"/>
+    </g>
+    <text x="985" y="375" class="caption">GENERATED UI MOTION STYLES</text>
+  </g>
+</svg>
