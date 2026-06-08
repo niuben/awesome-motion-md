@@ -83,10 +83,6 @@ motion-md/
 | `glitch-cyberpunk` | 霓虹、扫描线、故障风动效，并包含可访问性限制。 |
 | `editorial-scroll` | 适合文章、发布页和叙事页面的滚动叙事动效。 |
 
-## 参考资料
-
-- [`docs/material-motion-reference.md`](docs/material-motion-reference.md)：提炼后的 Material Motion 参考规则，用于构建 `material-expressive` 风格。
-
 ## 目标
 
 让 AI 生成的界面不再只有平淡的 `fadeIn`，而是拥有明确风格、节奏和表现力的动效系统。

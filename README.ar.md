@@ -82,10 +82,6 @@ motion-md/
 | `glitch-cyberpunk` | حركة neon و scanline و glitch مع ضوابط وصول. |
 | `editorial-scroll` | حركة سردية تعتمد على التمرير للمقالات وصفحات الإطلاق وتجارب scrollytelling. |
 
-## المراجع
-
-- [`docs/material-motion-reference.md`](docs/material-motion-reference.md): إرشادات Material Motion مختصرة استُخدمت لتشكيل نمط `material-expressive`.
-
 ## الهدف
 
 جعل الواجهات التي يولدها الذكاء الاصطناعي تبدو مقصودة، ومعبرة، وحية.

@@ -82,10 +82,6 @@ motion-md/
 | `glitch-cyberpunk` | アクセシビリティ制約を含む、ネオン、スキャンライン、グリッチモーション。 |
 | `editorial-scroll` | 記事、ローンチ、スクロールストーリーテリング向けのナラティブなスクロールモーション。 |
 
-## 参考資料
-
-- [`docs/material-motion-reference.md`](docs/material-motion-reference.md): `material-expressive` スタイルを形作るために要約された Material Motion ガイド。
-
 ## 目標
 
 AI が生成する UI を、意図があり、表現力があり、生き生きとしたものにすること。

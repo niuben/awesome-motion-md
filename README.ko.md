@@ -82,10 +82,6 @@ motion-md/
 | `glitch-cyberpunk` | 접근성 제한을 포함한 neon, scanline, glitch 모션. |
 | `editorial-scroll` | 기사, 출시 페이지, scrollytelling에 적합한 내러티브 스크롤 모션. |
 
-## 참고 자료
-
-- [`docs/material-motion-reference.md`](docs/material-motion-reference.md): `material-expressive` 스타일을 구성하는 데 사용된 Material Motion 요약 가이드.
-
 ## 목표
 
 AI가 생성한 인터페이스가 의도적이고, 표현력 있으며, 살아 있는 느낌을 갖게 만드는 것.

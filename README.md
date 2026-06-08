@@ -82,10 +82,6 @@ motion-md/
 | `glitch-cyberpunk` | Neon, scanline, and glitch motion with accessibility safeguards. |
 | `editorial-scroll` | Narrative scroll motion for articles, launches, and scrollytelling pages. |
 
-## References
-
-- [`docs/material-motion-reference.md`](docs/material-motion-reference.md): summarized Material Motion guidance used to shape the `material-expressive` style.
-
 ## Goal
 
 Make AI-generated interfaces feel intentional, expressive, and alive.
