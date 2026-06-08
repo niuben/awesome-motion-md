@@ -9,29 +9,20 @@ A curated collection of `MOTION.md` files that help AI agents generate stunning,
 
 Each preview uses the same UI elements, while the visual style and motion behavior are generated from its own `MOTION.md`.
 
-| Material Expressive | Apple Fluid |
-| --- | --- |
-| ![Material Expressive preview](asset/previews/material-expressive.gif) | ![Apple Fluid preview](asset/previews/apple-fluid.gif) |
-
-| Fluent Productive | Carbon Enterprise |
-| --- | --- |
-| ![Fluent Productive preview](asset/previews/fluent-productive.gif) | ![Carbon Enterprise preview](asset/previews/carbon-enterprise.gif) |
-
-| Linear Snappy | Stripe Polished |
-| --- | --- |
-| ![Linear Snappy preview](asset/previews/linear-snappy.gif) | ![Stripe Polished preview](asset/previews/stripe-polished.gif) |
-
-| Vercel Minimal | Framer Spring |
-| --- | --- |
-| ![Vercel Minimal preview](asset/previews/vercel-minimal.gif) | ![Framer Spring preview](asset/previews/framer-spring.gif) |
-
-| GSAP Cinematic | Game Impact |
-| --- | --- |
-| ![GSAP Cinematic preview](asset/previews/gsap-cinematic.gif) | ![Game Impact preview](asset/previews/game-impact.gif) |
-
-| Glitch Cyberpunk | Editorial Scroll |
-| --- | --- |
-| ![Glitch Cyberpunk preview](asset/previews/glitch-cyberpunk.gif) | ![Editorial Scroll preview](asset/previews/editorial-scroll.gif) |
+| Style Preview |
+| --- |
+| **Material Expressive**<br />![Material Expressive preview](asset/previews/material-expressive.gif) |
+| **Apple Fluid**<br />![Apple Fluid preview](asset/previews/apple-fluid.gif) |
+| **Fluent Productive**<br />![Fluent Productive preview](asset/previews/fluent-productive.gif) |
+| **Carbon Enterprise**<br />![Carbon Enterprise preview](asset/previews/carbon-enterprise.gif) |
+| **Linear Snappy**<br />![Linear Snappy preview](asset/previews/linear-snappy.gif) |
+| **Stripe Polished**<br />![Stripe Polished preview](asset/previews/stripe-polished.gif) |
+| **Vercel Minimal**<br />![Vercel Minimal preview](asset/previews/vercel-minimal.gif) |
+| **Framer Spring**<br />![Framer Spring preview](asset/previews/framer-spring.gif) |
+| **GSAP Cinematic**<br />![GSAP Cinematic preview](asset/previews/gsap-cinematic.gif) |
+| **Game Impact**<br />![Game Impact preview](asset/previews/game-impact.gif) |
+| **Glitch Cyberpunk**<br />![Glitch Cyberpunk preview](asset/previews/glitch-cyberpunk.gif) |
+| **Editorial Scroll**<br />![Editorial Scroll preview](asset/previews/editorial-scroll.gif) |
 
 ## What Is This?
 

@@ -224,9 +224,10 @@
       <rect x="101" y="179" width="128" height="30" rx="15" fill="#111827" stroke="#7DD3FC" stroke-opacity=".45"/>
       <circle cx="120" cy="194" r="5" fill="#7DD3FC" class="dot"/>
       <rect x="134" y="189" width="64" height="10" rx="5" fill="#A78BFA" opacity=".66"/>
-      <rect x="101" y="241" width="206" height="10" rx="5" fill="#7DD3FC" opacity=".62"/>
-      <rect x="101" y="263" width="172" height="10" rx="5" fill="#A78BFA" opacity=".6"/>
-      <rect x="101" y="285" width="226" height="10" rx="5" fill="#F472B6" opacity=".58"/>
+      <text x="101" y="236" class="label">Rules</text>
+      <rect x="101" y="255" width="206" height="10" rx="5" fill="#7DD3FC" opacity=".62"/>
+      <rect x="101" y="277" width="172" height="10" rx="5" fill="#A78BFA" opacity=".6"/>
+      <rect x="101" y="299" width="226" height="10" rx="5" fill="#F472B6" opacity=".58"/>
     </g>
     <text x="214" y="368" class="caption">RULEBOOKS: EASING / DURATION / STAGGER / A11Y</text>
 
